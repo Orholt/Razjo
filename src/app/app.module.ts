@@ -7,13 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainComponent } from './main/main.component';
 import { MasterMainComponent } from './master-main/master-main.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthRegisterComponent } from './auth-register/auth-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     MasterMainComponent,
-    AuthComponent
+    AuthComponent,
+    AuthRegisterComponent
   ],
   imports: [
     BrowserModule,
