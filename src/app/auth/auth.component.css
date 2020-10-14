@@ -1,0 +1,81 @@
+.logo
+{
+    z-index: 999;
+    width: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+.pd
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 20%;
+    z-index: 1;
+    z-index: -10;
+}
+.ld
+{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 20vh;
+    z-index: -10;
+}
+.lg
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 20%;
+    z-index: -10;
+}
+.auth
+{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+}
+.zaloguj_btn
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    margin-top: 4%;
+}
+.zaloguj_btn:hover
+{
+    filter: grayscale(80%);
+}
+.rejestracja:hover
+{
+    filter: grayscale(80%);
+}
+.forgot:hover
+{
+    filter: grayscale(80%);
+}
+.rejestracja
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top: 4%;
+}
+.forgot
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+    margin-top: 4%;
+    position: absolute;
+    bottom: 3%;
+    left: 0; 
+    right: 0; 
+}
