@@ -28,11 +28,11 @@
         <h3 style="text-align: center; color: #d02c4d;">Wybierz typ konta:</h3>
         <div class="radio">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <input (change)="roleChange(0)" class="form-check-input" type="radio" name="inlineRadioOptions" id="usr" value="option1">
                 <label class="form-check-label" for="inlineRadio1">Użytkownik</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <input (change)="roleChange(1)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                 <label class="form-check-label" for="inlineRadio2">Psycholog</label>
               </div>
           </div>

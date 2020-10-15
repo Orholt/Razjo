@@ -10,6 +10,7 @@ import { MasterMainComponent } from './master-main/master-main.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthRegisterComponent } from './auth-register/auth-register.component';
 import { from } from 'rxjs';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { from } from 'rxjs';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
