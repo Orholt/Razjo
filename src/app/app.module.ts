@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthRegisterComponent } from './auth-register/auth-register.component';
 import { from } from 'rxjs';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ForgetComponent } from './forget/forget.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     MainComponent,
     MasterMainComponent,
     AuthComponent,
-    AuthRegisterComponent
+    AuthRegisterComponent,
+    ForgetComponent
   ],
   imports: [
     BrowserModule,

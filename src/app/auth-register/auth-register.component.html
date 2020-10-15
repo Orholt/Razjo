@@ -9,7 +9,7 @@
   </div>
   <!---logo-->
   <div class="ico animate__animated animate__bounceIn"> 
-    <img src="../assets/auth/logo.png" alt="logo" class="logo">
+    <img [routerLink]="['']" src="../assets/auth/logo.png" alt="logo" class="logo">
   </div>
   <div class="auth">
     <div class="form-group animate__animated animate__fadeIn">
@@ -38,6 +38,5 @@
           </div>
     </div>
     <input type="image" (click)='createUser()' class="zaloguj_btn animate__animated animate__bounceIn" src="../assets/auth/zarejestruj.png" alt="login">
-    <input type="image" class="forgot animate__animated animate__bounceIn" src="../assets/auth/forget.png" alt="forgot">
     <pre class="pren">Zakładając konto w serwisie zgadzasz się z postanowieniami zawartymi w <a href="http://endless.horse" target="_blank">Regulaminie</a></pre>
   </div>
