@@ -15,14 +15,24 @@
    line-height: normal;
    margin-left: 3%;
 }
+.cont
+{
+    padding-top: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
 .yournotes
 {
     background-image: linear-gradient(#D93657, #C61F40);
-    width: 250px;
-    height: 200px;
+    width: 37vw;
+    height: 10vw;
     display: block;
     color: white;
     border-radius: 30px;
+    -webkit-box-shadow: 0px 0px 16px 6px rgba(217,54,87,1);
 }
 .yournotestext
 {
@@ -30,9 +40,26 @@
     line-height: normal;
     font-weight: normal;
     padding-left: 20px;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .yournotestext h1
 {
     font-weight: normal;
+    line-height: normal;
+    font-size: 250%;
+}
+.yournotestext p
+{
+    font-weight: normal;
+    line-height: normal;
+    font-size: 120%;
+    color: rgb(233, 233, 233);
+}
+.noteico
+{
+    
+}
+.noteico mat-icon
+{
+    font-size: 300%;
 }

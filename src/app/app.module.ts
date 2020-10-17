@@ -12,6 +12,7 @@ import { AuthRegisterComponent } from './auth-register/auth-register.component';
 import { from } from 'rxjs';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ForgetComponent } from './forget/forget.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ForgetComponent } from './forget/forget.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
