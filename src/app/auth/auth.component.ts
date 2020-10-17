@@ -16,10 +16,12 @@ export class AuthComponent implements OnInit {
   loginfield; passwordfield;
   $response: IUserObj;
   usr: User;
+  overlay;
 
   ngOnInit(): void {
     this.loginfield = document.getElementById('email') as HTMLInputElement;
     this.passwordfield = document.getElementById('password') as HTMLInputElement;
+    this.overlay = false;
   }
 
   setData()
@@ -33,7 +35,7 @@ export class AuthComponent implements OnInit {
 
   login()
   {
-    console.log(this.usr);
+    this.overlay = true;
     this.loginservice.loginUser(this.usr).subscribe({
       next: data => {
         this.$response = data;
@@ -43,19 +45,20 @@ export class AuthComponent implements OnInit {
             text: 'Zostałeś pomyślnie zalogowany, za chwilę zostaniesz przeniesiony do panelu',
             confirmButtonText: `Ok`
           }).then((result) => {
+            this.overlay = false;
             if (result.isConfirmed) {
               this.afterPost();
             }
           });
       },
       error: error => {
-        console.log(error);
         Swal.fire({
           icon: 'error',
           title: 'Wystąpił Błąd',
           text: 'Wystąpił błąd podczas logowania',
-          footer: error.errors
+          footer: error.error.errors
         });
+        this.overlay = false;
       }
   });
   }

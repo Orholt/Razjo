@@ -1,3 +1,6 @@
+<div *ngIf="overlay" class="overlay">
+  <img class="center" src="../../assets/auth/load.gif">
+</div>
 <div class="layout animate__animated animate__fadeIn">
     <img src="../assets/auth/l_g.png" alt="l_main" class="lg">
   </div>
@@ -18,7 +21,7 @@
     <div class="form-group animate__animated animate__fadeIn">
       <input id="password" type="password" class="form-control" placeholder="Hasło">
     </div>
-    <input type="image" (click)="setData()" class="zaloguj_btn animate__animated animate__bounceIn" src="../assets/auth/btn's.png" alt="login">
+    <input (click)="setData()" type="image" class="zaloguj_btn animate__animated animate__bounceIn" src="../assets/auth/btn's.png" alt="login">
     <input [routerLink]="['authRegister']" type="image" class="rejestracja animate__animated animate__bounceIn" src="../assets/auth/register.png" alt="register">
     <input [routerLink]="['forget']" type="image" class="forgot animate__animated animate__bounceIn" src="../assets/auth/forget.png" alt="forgot">
   </div>

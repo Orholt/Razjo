@@ -13,6 +13,7 @@ import { from } from 'rxjs';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ForgetComponent } from './forget/forget.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
