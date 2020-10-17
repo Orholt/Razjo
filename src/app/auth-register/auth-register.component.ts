@@ -65,14 +65,14 @@ export class AuthRegisterComponent implements OnInit {
             title: 'Zarejestrowano!',
             text: 'Zostałeś pomyślnie zarejestrowany w naszym serwisie 😀',
             footer: 'Nie zapomnij sprawdzić swojej poczty 📧'
-          })
+          });
       },
       error: error => {
         Swal.fire(
           'Wystąpił błąd!',
           'Niestety podczas rejestracji wystąpił błąd',
           'error'
-        )
+        );
       }
   });
   }
