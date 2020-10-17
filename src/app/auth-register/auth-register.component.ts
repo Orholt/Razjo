@@ -49,7 +49,9 @@ export class AuthRegisterComponent implements OnInit {
     this.userData = {
       email: this.email.value,
       password: this.pass.value,
-      role: this.defRole
+      role: this.defRole,
+      firstName: this.name.value,
+      surname: this.surname.value
     };
     this.createUserPost();
   }

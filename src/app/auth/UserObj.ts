@@ -11,11 +11,27 @@ export interface IUserObj {
         calendarNotes: {
             userId: string,
             userRole: string,
-            day: number,
-            month: number,
-            year: number,
+            date: {
+                year: number,
+                month: number,
+                day: number,
+                hour: number,
+                minute: number
+            };
             message: string
-        }
+        };
+        visits:
+        {
+            familyId: string,
+            date: {
+                year: number,
+                month: number,
+                day: number,
+                hour: number,
+                minute: number
+            };
+            message: string
+        };
     };
     privateNotes:
     {

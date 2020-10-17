@@ -57,9 +57,16 @@
 }
 .noteico
 {
-    
+    text-align: right;
+    padding-right: 5%;
+    position: relative;
+    bottom: 10px;
 }
 .noteico mat-icon
 {
     font-size: 300%;
+}
+.naver
+{
+    background-color: #feb7bc;
 }
