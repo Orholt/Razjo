@@ -1,0 +1,38 @@
+.ico
+{
+    display: flex;
+    justify-content: space-between;  
+}
+.logo
+{
+    width: 5%;
+    height: 5%;
+}
+.witaj
+{
+   font-weight: normal;
+   font-size: 5vw;
+   line-height: normal;
+   margin-left: 3%;
+}
+.yournotes
+{
+    background-image: linear-gradient(#D93657, #C61F40);
+    width: 250px;
+    height: 200px;
+    display: block;
+    color: white;
+    border-radius: 30px;
+}
+.yournotestext
+{
+    color: white;
+    line-height: normal;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.yournotestext h1
+{
+    font-weight: normal;
+}

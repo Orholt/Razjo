@@ -66,6 +66,7 @@ export class AuthComponent implements OnInit {
   afterPost()
   {
     localStorage.setItem('token', this.$response.token);
+    localStorage.setItem('usrName', this.$response.userInfo.firstName);
     setTimeout(() => {
       if (this.$response.userInfo.role === 'USR')
       {
