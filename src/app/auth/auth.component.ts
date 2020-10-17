@@ -3,6 +3,7 @@ import { User } from './User';
 import { LoginService } from './login.service';
 import { IUserObj } from './UserObj';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -10,10 +11,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  constructor(private loginservice: LoginService) { }
+  constructor(private loginservice: LoginService, private router: Router) { }
 
   loginfield; passwordfield;
-
+  $response: IUserObj;
   usr: User;
 
   ngOnInit(): void {
@@ -35,11 +36,16 @@ export class AuthComponent implements OnInit {
     console.log(this.usr);
     this.loginservice.loginUser(this.usr).subscribe({
       next: data => {
-          console.log(data);
-          Swal.fire({
+        this.$response = data;
+        Swal.fire({
             icon: 'success',
             title: 'Zalogowano!',
             text: 'Zostałeś pomyślnie zalogowany, za chwilę zostaniesz przeniesiony do panelu',
+            confirmButtonText: `Ok`
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.afterPost();
+            }
           });
       },
       error: error => {
@@ -52,6 +58,21 @@ export class AuthComponent implements OnInit {
         });
       }
   });
+  }
+// tslint:disable: no-unused-expression
+  afterPost()
+  {
+    localStorage.setItem('token', this.$response.token);
+    setTimeout(() => {
+      if (this.$response.userInfo.role === 'USR')
+      {
+        this.router.navigate(['/userMain']);
+      }
+      else if ( this.$response.userInfo.role === 'PSY')
+      {
+        this.router.navigate(['/masterMain']);
+      }
+    }, 500);
   }
 
 }

@@ -14,6 +14,6 @@ export class LoginService {
 
   loginUser(user: User)
   {
-    return this.http.post(this.apiUrl + '/User/login', user);
+    return this.http.post<IUserObj>(this.apiUrl + '/User/login', user);
   }
 }
