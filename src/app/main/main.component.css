@@ -1,3 +1,12 @@
+.bc
+{
+    background-image: url("../../assets/theme/waveform.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
 .bg-custom
 {
     background: white;
@@ -17,4 +26,49 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+}
+.notes
+{
+    height: 100%;
+}
+.notes h1
+{
+    font-weight: 400;
+    font-size: 400%;
+    padding-top: 2vw;
+    padding-bottom: 2vh;
+}
+.notes h2
+{
+    font-weight: 400;
+    font-size: 3vw;
+    padding-top: 3%;
+    padding-bottom: 2vh;
+}
+.mat-icon {
+    vertical-align: middle;
+ }
+ .content
+ {
+     margin-top: 3vw;
+ }
+ .jumbotron
+ {
+    border-radius: 30px 30px 30px 30px;
+    padding: 2vw 1vw 2vw 1vw;
+    background: rgba(233,236, 239, 0.4)
+ }
+ .container :hover
+ {
+     background: rgba(233,236, 239, 1)
+ }
+
+.crim
+{
+    background-color:#ce2a4b;
+    color: white;
+}
+.ft
+{
+    line-height: normal;
 }
