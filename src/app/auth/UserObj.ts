@@ -8,7 +8,7 @@ export interface IUserObj {
         usrId: string,
         userNames: string,
         invitiationCode: string,
-        calendarNotes: {
+        calendarNotes: [{
             userId: string,
             userRole: string,
             date: {
@@ -19,9 +19,9 @@ export interface IUserObj {
                 minute: number
             };
             message: string
-        };
+        }];
         visits:
-        {
+        [{
             familyId: string,
             date: {
                 year: number,
@@ -31,13 +31,13 @@ export interface IUserObj {
                 minute: number
             };
             message: string
-        };
+        }];
     };
     privateNotes:
-    {
+    [{
         messages: string,
         creationDate: Date
-    };
+    }];
     token: string;
     userInfo: {
         id: string,
