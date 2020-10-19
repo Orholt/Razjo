@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './User';
 import { LoginService } from './login.service';
-import { IUserObj } from './UserObj';
+import { IUserObj } from './UserObjG';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
