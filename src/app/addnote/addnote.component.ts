@@ -48,7 +48,7 @@ export class AddnoteComponent implements OnInit {
       error: error => {
         Swal.fire({
           icon: 'error',
-          title: 'Wystąpił Błąd',
+          title: 'Wystąpił Błąd!',
           text: 'Wystąpił błąd podczas dodawania notatki',
           footer: error.error.errors
         });

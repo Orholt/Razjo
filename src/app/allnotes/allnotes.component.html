@@ -14,9 +14,20 @@
       <!------UI-->
       <div class="ml-4 pt-4 mr-4 text-center">
           <div class="notes">
-              <h1 class="animate__animated animate__fadeIn">Treść notatki:</h1>
-              <div class="container note animate__animated animate__fadeIn">
-                  <textarea id="textBox" style="resize: none;" class="form-control form-control-lg"  draggable="false" rows="6" placeholder="Wprowadź treść swojej notatki"></textarea>
+              <h1 class="animate__animated animate__fadeIn">Wszystkie notatki:</h1>
+              <div class=" ctn note animate__animated animate__fadeIn">
+                  <div class="row">
+                      <div *ngFor="let item of $response" class="col-4">
+                          <div class="jumbotron">
+                              <h1 class="display-3">Notatka</h1>
+                              <div class="jumbotron ml-2 mr-2 jbwhite">
+                                <h2 class="text-justify noteText pl-3 pr-3">{{item.message}}</h2>
+                              </div>
+                              <h3>Godzina: {{item.creationDate.hour}}:{{item.creationDate.minute}}</h3>
+                              <h3 class="">Data: {{item.creationDate.day}}-{{item.creationDate.month}}-{{item.creationDate.year}}</h3>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
       </div>

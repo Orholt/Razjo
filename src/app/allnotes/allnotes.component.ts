@@ -1,4 +1,6 @@
+import { trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { INote } from '../addnote/Note';
 import { NotesService } from '../addnote/notes.service';
 
@@ -16,6 +18,27 @@ export class AllnotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.overlay = false;
+    this.fetchNotes();
+  }
+
+  fetchNotes()
+  {
+    this.overlay = true;
+    this.notes.getNotes().subscribe({
+      next: data => {
+        this.$response = data;
+        this.overlay = false;
+      },
+      error: err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd pobierania notatek',
+          footer: err.error.errors
+        });
+        this.overlay = false;
+      }
+    });
   }
 
 }
