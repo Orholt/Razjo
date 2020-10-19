@@ -2,7 +2,7 @@
 <div class="sticky-top navbar navbar-dark bg-custom shadow-sm">
     <div class="justify-content-between">
       <div class="navbar-brand d-flex align-items-center">
-        <img src="../../assets/auth/logo.png" width="40" height="40" class="mr-2" focusable="false">
+        <img draggable="false" src="../../assets/auth/logo.png" width="40" height="40" class="mr-2" focusable="false">
         <h1 class="t1 text-dark">Witaj, {{usrName}}</h1>
         <button class="btnw btn btn-outline-danger">Wyloguj</button>
       </div>
@@ -19,14 +19,14 @@
             <div id="j1" class="jumbotron j1 jcreate mt-2 mb-3">
               <h2 class="ft">Tworzenie notatek</h2>
               <p class="lead mt-2 mb-4">Ta sekcja pozwala na tworzenie nowej notatki</p>
-              <a class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Utwórz nową notatkę »</a>
+              <a [routerLink]="['../addNote']" class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Utwórz nową notatkę »</a>
             </div>
           </div>
           <div class="container animate__animated animate__fadeIn">
             <div class="jumbotron j2 mt-2 mb-3">
               <h2 class="ft">Przeglądanie notatek</h2>
               <p class="lead mt-1 mb-4">Ta sekcja pozwala na przeglądanie utworzonych wcześniej notatek</p>
-              <a class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Zobacz swoje notatki »</a>
+              <a [routerLink]="['../allNotes']" class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Zobacz swoje notatki »</a>
             </div>
           </div>
           <div class="container animate__animated animate__fadeIn">
@@ -50,6 +50,7 @@
       <h1 class="typo animate__animated animate__fadeIn">Kalendarz i Notatki</h1>
       <div class="notes">
         <div class="content">
+          <app-calendar></app-calendar> <!--Kalendarz-->
           <app-notes></app-notes> <!--Notatki-->
         </div>
       </div>

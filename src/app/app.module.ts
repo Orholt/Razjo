@@ -14,6 +14,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ForgetComponent } from './forget/forget.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NotesComponent } from './main/notes/notes.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
+import { AddnoteComponent } from './addnote/addnote.component';
+import { AllnotesComponent } from './allnotes/allnotes.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { NotesComponent } from './main/notes/notes.component';
     AuthComponent,
     AuthRegisterComponent,
     ForgetComponent,
-    NotesComponent
+    NotesComponent,
+    CalendarComponent,
+    AddnoteComponent,
+    AllnotesComponent
   ],
   imports: [
     BrowserModule,

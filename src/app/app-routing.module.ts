@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddnoteComponent } from './addnote/addnote.component';
+import { AllnotesComponent } from './allnotes/allnotes.component';
 import { AuthRegisterComponent } from './auth-register/auth-register.component';
 import { AuthComponent } from './auth/auth.component';
 import { ForgetComponent } from './forget/forget.component';
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path: 'authRegister', component: AuthRegisterComponent},
   {path: 'forget', component: ForgetComponent},
   {path: 'home', component: AuthComponent},
+  {path: 'addNote', component: AddnoteComponent},
+  {path: 'allNotes', component: AllnotesComponent},
   {path: '**', pathMatch: 'full', component: AuthComponent }
 ];
 

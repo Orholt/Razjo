@@ -1,0 +1,23 @@
+<div *ngIf="overlay" class="overlay">
+    <img class="center" src="../../assets/auth/load.gif">
+  </div>
+  <div class="site bc">
+      <div class="sticky-top navbar navbar-dark bg-custom shadow-sm">
+          <div class="justify-content-between">
+            <div class="navbar-brand d-flex align-items-center">
+              <img [routerLink]="['../userMain']" draggable="false" src="../../assets/auth/logo.png" width="40" height="40" class="mr-2" focusable="false">
+              <h1 class="t1 text-dark display-3">Notatki</h1>
+              <button class="btnw btn btn-outline-danger">Wyloguj</button>
+            </div>
+          </div>
+        </div>
+      <!------UI-->
+      <div class="ml-4 pt-4 mr-4 text-center">
+          <div class="notes">
+              <h1 class="animate__animated animate__fadeIn">Treść notatki:</h1>
+              <div class="container note animate__animated animate__fadeIn">
+                  <textarea id="textBox" style="resize: none;" class="form-control form-control-lg"  draggable="false" rows="6" placeholder="Wprowadź treść swojej notatki"></textarea>
+              </div>
+          </div>
+      </div>
+  </div>
