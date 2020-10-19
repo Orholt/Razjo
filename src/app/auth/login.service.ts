@@ -10,6 +10,7 @@ import { User } from './User';
 })
 export class LoginService {
   apiUrl = 'https://razjoapi.herokuapp.com/api';
+  $reqObj: IUserObj;
   constructor(private http: HttpClient) { }
 
   loginUser(user: User)

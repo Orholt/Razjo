@@ -39,6 +39,7 @@ export class AuthComponent implements OnInit {
     this.loginservice.loginUser(this.usr).subscribe({
       next: data => {
         this.$response = data;
+        this.loginservice.$reqObj = this.$response;
         this.overlay = false;
         this.afterPost();
       },
