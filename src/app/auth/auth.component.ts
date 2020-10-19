@@ -39,17 +39,8 @@ export class AuthComponent implements OnInit {
     this.loginservice.loginUser(this.usr).subscribe({
       next: data => {
         this.$response = data;
-        Swal.fire({
-            icon: 'success',
-            title: 'Zalogowano!',
-            text: 'Zostałeś pomyślnie zalogowany, za chwilę zostaniesz przeniesiony do panelu',
-            confirmButtonText: `Ok`
-          }).then((result) => {
-            this.overlay = false;
-            if (result.isConfirmed) {
-              this.afterPost();
-            }
-          });
+        this.overlay = false;
+        this.afterPost();
       },
       error: error => {
         Swal.fire({

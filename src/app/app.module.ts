@@ -13,6 +13,7 @@ import { from } from 'rxjs';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ForgetComponent } from './forget/forget.component';
 import { MatIconModule } from '@angular/material/icon';
+import { NotesComponent } from './main/notes/notes.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
     MasterMainComponent,
     AuthComponent,
     AuthRegisterComponent,
-    ForgetComponent
+    ForgetComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
