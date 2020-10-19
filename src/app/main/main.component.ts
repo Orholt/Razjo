@@ -22,7 +22,6 @@ export class MainComponent implements OnInit {
     {
       this.usrName = 'Anon';
     }
-    console.log(this.$request.token);
   }
 
 }
