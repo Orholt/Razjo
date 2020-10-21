@@ -1,3 +1,6 @@
+<div *ngIf="overlay" class="overlay">
+  <img class="center" src="../../assets/auth/load.gif">
+</div>
 <div class="layout animate__animated animate__fadeIn">
     <img src="../assets/auth/l_g.png" alt="l_main" class="lg">
   </div>
@@ -8,7 +11,7 @@
     <img src="../assets/auth/l_d.png" class="ld" alt="l_main">
   </div>
   <!---logo-->
-  <div class="ico animate__animated animate__bounceIn"> 
+  <div class="ico animate__animated animate__bounceIn">
     <img [routerLink]="['']" src="../assets/auth/logo.png" alt="logo" class="logo">
   </div>
   <div class="auth">

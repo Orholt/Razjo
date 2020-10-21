@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { RegisterHandlerService } from './register-handler.service';
@@ -13,7 +14,8 @@ export class AuthRegisterComponent implements OnInit {
   data$;
   valuechanges;
   userData: User;
-  constructor(private regHandler: RegisterHandlerService) { }
+  overlay;
+  constructor(private regHandler: RegisterHandlerService, private router: Router) { }
 
   email;
   name ;
@@ -30,6 +32,7 @@ export class AuthRegisterComponent implements OnInit {
     this.pass = document.getElementById('password') as HTMLInputElement;
     this.radio = document.getElementById('usr') as HTMLInputElement;
     this.radio.checked = true;
+    this.overlay = false;
   }
 
   roleChange(i: number)
@@ -59,17 +62,25 @@ export class AuthRegisterComponent implements OnInit {
   // Adding User
   createUserPost()
   {
+    this.overlay = true;
     this.regHandler.addUser(this.userData).subscribe({
       next: data => {
           this.data$ = data;
+          this.overlay = false;
           Swal.fire({
             icon: 'success',
             title: 'Zarejestrowano!',
             text: 'Zostałeś pomyślnie zarejestrowany w naszym serwisie 😀',
-            footer: 'Nie zapomnij sprawdzić swojej poczty 📧'
+            footer: 'Nie zapomnij sprawdzić swojej poczty 📧',
+            confirmButtonText: `Ok`
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['../']);
+            }
           });
       },
       error: error => {
+        this.overlay = false;
         Swal.fire(
           'Wystąpił błąd!',
           'Niestety podczas rejestracji wystąpił błąd',
@@ -77,5 +88,13 @@ export class AuthRegisterComponent implements OnInit {
         );
       }
   });
+  }
+
+  clearInput()
+  {
+    this.email.value = '';
+    this.name.value = '';
+    this.pass.value = '';
+    this.surname.value = '';
   }
 }
