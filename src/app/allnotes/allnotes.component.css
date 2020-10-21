@@ -5,19 +5,19 @@
     background-repeat: no-repeat;
     background-size: 100% auto;
     position: sticky;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 }
 .overlay
 {
-    opacity:    0.8; 
-    background: #000; 
+    opacity:    0.8;
+    background: #000;
     width:      100%;
-    height:     100%; 
+    height:     100%;
     z-index:    10;
-    top:        0; 
-    left:       0; 
-    position:   fixed; 
+    top:        0;
+    left:       0;
+    position:   fixed;
     display: flex;
     align-items: center;
     justify-content: center;

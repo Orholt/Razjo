@@ -7,7 +7,7 @@
           <div class="navbar-brand d-flex align-items-center">
             <img [routerLink]="['../userMain']" draggable="false" src="../../assets/auth/logo.png" width="40" height="40" class="mr-2" focusable="false">
             <h1 class="t1 text-dark display-3">Notatki</h1>
-            <button class="btnw btn btn-outline-danger">Wyloguj</button>
+            <button (click)="logOut()" class="btnw btn btn-outline-danger">Wyloguj</button>
           </div>
         </div>
       </div>

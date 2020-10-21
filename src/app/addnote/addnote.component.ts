@@ -23,6 +23,11 @@ export class AddnoteComponent implements OnInit {
     this.overlay = false;
   }
 
+  logOut()
+  {
+    this.noteService.logOut();
+  }
+
   addNote()
   {
     // SetData

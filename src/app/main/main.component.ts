@@ -1,3 +1,4 @@
+import { NotesService } from './../addnote/notes.service';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { isDefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,7 @@ import { IUserObj } from '../auth/UserObjG';
 export class MainComponent implements OnInit {
 
   $request: IUserObj;
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private noteService: NotesService) { }
 
   usrName = localStorage.getItem('usrName');
 
@@ -22,6 +23,11 @@ export class MainComponent implements OnInit {
     {
       this.usrName = 'Anon';
     }
+  }
+
+  logOut()
+  {
+    this.noteService.logOut();
   }
 
 }

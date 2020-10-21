@@ -11,7 +11,7 @@ import { NotesService } from '../addnote/notes.service';
 })
 export class AllnotesComponent implements OnInit {
 
-  constructor(private notes: NotesService) { }
+  constructor(private notes: NotesService, private noteservice: NotesService) { }
 
   $response: INote[];
   overlay;
@@ -19,6 +19,11 @@ export class AllnotesComponent implements OnInit {
   ngOnInit(): void {
     this.overlay = false;
     this.fetchNotes();
+  }
+
+  logOut()
+  {
+    this.noteservice.logOut();
   }
 
   fetchNotes()

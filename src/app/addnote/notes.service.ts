@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { INote } from './Note';
@@ -11,7 +12,7 @@ export class NotesService {
   apiUrl = 'https://razjoapi.herokuapp.com/api';
   $notes: Array<INote>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getNotes()
   {
@@ -30,5 +31,11 @@ export class NotesService {
           Authorization: 'Bearer ' + localStorage.getItem('token')
        });
         return this.http.post<INote>(this.apiUrl + '/PrivateNotes/add', note, { headers: reqHeader });
+  }
+  logOut()
+  {
+    this.router.navigate(['**']);
+    localStorage.removeItem('token');
+    localStorage.removeItem('usrName');
   }
 }
