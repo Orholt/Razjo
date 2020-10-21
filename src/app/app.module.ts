@@ -17,6 +17,7 @@ import { NotesComponent } from './main/notes/notes.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { AddnoteComponent } from './addnote/addnote.component';
 import { AllnotesComponent } from './allnotes/allnotes.component';
+import { CalendarviewComponent } from './calendarview/calendarview.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AllnotesComponent } from './allnotes/allnotes.component';
     NotesComponent,
     CalendarComponent,
     AddnoteComponent,
-    AllnotesComponent
+    AllnotesComponent,
+    CalendarviewComponent
   ],
   imports: [
     BrowserModule,

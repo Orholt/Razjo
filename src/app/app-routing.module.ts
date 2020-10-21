@@ -1,3 +1,5 @@
+import { CalendarviewComponent } from './calendarview/calendarview.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddnoteComponent } from './addnote/addnote.component';
@@ -17,6 +19,7 @@ const routes: Routes = [
   {path: 'home', component: AuthComponent},
   {path: 'addNote', component: AddnoteComponent},
   {path: 'allNotes', component: AllnotesComponent},
+  {path: 'calendar', component: CalendarviewComponent},
   {path: '**', pathMatch: 'full', component: AuthComponent }
 ];
 
