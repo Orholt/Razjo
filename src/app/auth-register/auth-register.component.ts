@@ -81,11 +81,12 @@ export class AuthRegisterComponent implements OnInit {
       },
       error: error => {
         this.overlay = false;
-        Swal.fire(
-          'Wystąpił błąd!',
-          'Niestety podczas rejestracji wystąpił błąd',
-          'error'
-        );
+        Swal.fire({
+          title: 'Wystąpił błąd!',
+          text: 'Niestety podczas rejestracji wystąpił błąd',
+          icon: 'error',
+          footer: error.error.errors
+        });
       }
   });
   }
