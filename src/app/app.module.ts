@@ -18,6 +18,8 @@ import { CalendarComponent } from './main/calendar/calendar.component';
 import { AddnoteComponent } from './addnote/addnote.component';
 import { AllnotesComponent } from './allnotes/allnotes.component';
 import { CalendarviewComponent } from './calendarview/calendarview.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { CalendarviewComponent } from './calendarview/calendarview.component';
     NgbModule,
     HttpClientModule,
     SweetAlert2Module,
-    MatIconModule
+    MatIconModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
