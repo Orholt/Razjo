@@ -69,11 +69,20 @@ export class CalendarviewComponent implements OnInit {
     };
 
     let $res: GetNotesforMonth[];
+    let $tab: CalendarEvent;
     this.calendarService.getNotesForMonth(x).subscribe({
       next: data => {
         $res = data;
         this.overlay = false;
-        console.log($res);
+        // TODO: Przerabianie notatek;
+        data.forEach(element => {
+          $tab = {
+            title: 'Notatka',
+            color: colors.yellow,
+            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
+          };
+          this.events.push($tab);
+        });
       },
       error: err => {
         Swal.fire({

@@ -65,12 +65,12 @@ export class AuthComponent implements OnInit {
       {
         localStorage.setItem('familyId', this.$response.families[0].familyId);
       }
-      else if (this.$response.families.length >= 1)
+      else if (this.$response.families.length > 1)
       {
         let t: string;
-        t = '';
+        t = 'array';
         this.$response.families.forEach(familyI => {
-          t += familyI.familyId + 'array$'; // !important
+          t += '$' + familyI.familyId; // !important
         });
         console.log(t);
         localStorage.setItem('familyId', t);
