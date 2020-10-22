@@ -21,6 +21,8 @@ export class CalendarserviceService {
   apiUrl = 'https://razjoapi.herokuapp.com/api';
   reqHeader;
   familyId;
+  familyIds: Array<string>;
+
   public events: CalendarEvent[];
   constructor(private http: HttpClient) { }
 
@@ -31,7 +33,23 @@ export class CalendarserviceService {
         Authorization: 'Bearer ' + localStorage.getItem('token')
      });
 
-     this.familyId = localStorage.getItem('familyId'); // !important
+      if (localStorage.getItem('familyId') === 'none')
+     {
+       this.familyId = 'none';
+     }
+     else if (!localStorage.getItem('familyId').startsWith('array$'))
+     {
+      this.familyId = localStorage.getItem('familyId');
+     }
+     else if (localStorage.getItem('familyId').startsWith('array$'))
+     {
+        let t: string;
+        let arr: Array<string>;
+        t = localStorage.getItem('familyId').startsWith('array$').toString();
+        arr = t.split('$');
+        arr.shift();
+        this.familyIds = arr;
+     }
     }
 
     addNote(note: IAddNote)
