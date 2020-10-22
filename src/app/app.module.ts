@@ -1,3 +1,4 @@
+import { DemoUtilsModule } from './calendarview/utils/module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
+import { ContextMenuModule } from 'ngx-contextmenu';
 
 registerLocaleData(localePl);
 
@@ -48,7 +50,9 @@ registerLocaleData(localePl);
     SweetAlert2Module,
     MatIconModule,
     CalendarModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    DemoUtilsModule,
+    ContextMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

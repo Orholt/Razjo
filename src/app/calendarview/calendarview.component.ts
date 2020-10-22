@@ -2,7 +2,8 @@ import { NotesService } from './../addnote/notes.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { reduce } from 'rxjs/operators';
-import { colors } from './colors';
+import { colors } from './utils/colors';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-calendarview',
@@ -12,6 +13,8 @@ import { colors } from './colors';
 })
 export class CalendarviewComponent implements OnInit {
 
+  constructor(private notesService: NotesService) { }
+
   locale = 'pl';
 
   view: CalendarView = CalendarView.Month;
@@ -19,11 +22,6 @@ export class CalendarviewComponent implements OnInit {
   viewDate: Date = new Date();
 
   events: CalendarEvent[] = [
-    {
-      title: 'Click me',
-      color: colors.red,
-      start: new Date(),
-    },
     {
       title: 'Or click me',
       color: colors.yellow,
@@ -35,9 +33,14 @@ export class CalendarviewComponent implements OnInit {
 
   clickedColumn: number;
 
-  constructor(private notesService: NotesService) { }
-
   overlay;
+
+  addEvent(date: any): void {
+
+    console.log(date);
+    // this.refresh.next();
+  }
+
   ngOnInit(): void {
     this.overlay = false;
   }

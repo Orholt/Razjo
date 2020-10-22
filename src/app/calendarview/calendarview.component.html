@@ -15,6 +15,12 @@
     <div class="ml-4 pt-4 mr-4 text-center">
         <div class="notes">
 
+          <context-menu #basicMenu>
+            <ng-template contextMenuItem (execute)="addEvent($event)">
+              Add event
+            </ng-template>
+          </context-menu>
+
           <div class="alert alert-info">
             Click on a day or time slot on the view.
             <strong *ngIf="clickedDate"
