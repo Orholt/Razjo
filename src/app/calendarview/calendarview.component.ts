@@ -1,9 +1,12 @@
+import { IGetNotesforMonth } from './models/ICalGetNotesForMonth';
+import { CalendarserviceService } from './calendarservice.service';
 import { NotesService } from './../addnote/notes.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { reduce } from 'rxjs/operators';
 import { colors } from './utils/colors';
 import { Subject } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-calendarview',
@@ -13,7 +16,7 @@ import { Subject } from 'rxjs';
 })
 export class CalendarviewComponent implements OnInit {
 
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService, private calendarService: CalendarserviceService) { }
 
   locale = 'pl';
 
@@ -43,6 +46,8 @@ export class CalendarviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.overlay = false;
+    this.calendarService.headerToToken();
+    this.getNotesForThisMonth();
   }
 
 
@@ -51,7 +56,68 @@ export class CalendarviewComponent implements OnInit {
     this.notesService.logOut();
   }
 
+//#region calendarservice
+  // !CalendaService
+  getNotesForThisMonth()
+  {
+    let x: IGetNotesforMonth =
+    {
+      familyId: 'xd',
+      month: (new Date().getMonth() + 1).toString()
+    };
+
+    let $res;
+    this.calendarService.getNotesForMonth(x).subscribe({
+      next: data => {
+        $res = data;
+        this.overlay = false;
+        console.log(data);
+      },
+      error: err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd pobierania danych',
+          footer: err.error.errors
+        });
+        this.overlay = false;
+      }
+    });
+  }
+
+  getNotesForMonth(y: number)
+  {
+    let x: IGetNotesforMonth =
+    {
+      familyId: 'xd',
+      month: (new Date().getMonth() + 1 + y).toString()
+    };
+
+    let $res;
+    this.calendarService.getNotesForMonth(x).subscribe({
+      next: data => {
+        $res = data;
+        this.overlay = false;
+        // console.log(data);
+      },
+      error: err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd pobierania danych',
+          footer: err.error.errors
+        });
+        this.overlay = false;
+      }
+    });
+  }
+
+
+  // !
+//#endregion
+
   eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
     }
-  }
+}
+

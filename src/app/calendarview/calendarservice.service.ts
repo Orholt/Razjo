@@ -11,6 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { colors } from './utils/colors';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,6 @@ export class CalendarserviceService {
     {
       return this.http.post<AddNote>(this.apiUrl + '/Calendar/addNote', note, { headers: this.reqHeader });
     }
-
     getLastNotes(familyId: ICalGetLastNotes)
     {
       return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastNotes', familyId, { headers: this.reqHeader });
