@@ -47,6 +47,7 @@ registerLocaleData(localePl);
     HttpClientModule,
     SweetAlert2Module,
     MatIconModule,
+    CalendarModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
