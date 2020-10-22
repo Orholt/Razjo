@@ -59,6 +59,27 @@ export class AuthComponent implements OnInit {
   {
     localStorage.setItem('token', this.$response.token);
     localStorage.setItem('usrName', this.$response.userInfo.firstName);
+    if (this.$response.families[0] !== null || this.$response.families[0] !== undefined)
+    {
+      if (this.$response.families.length === 1)
+      {
+        localStorage.setItem('familyId', this.$response.families[0].familyId);
+      }
+      else if (this.$response.families.length >= 1)
+      {
+        let t: string;
+        t = '';
+        this.$response.families.forEach(familyI => {
+          t += familyI.familyId + 'array$'; // !important
+        });
+        console.log(t);
+        localStorage.setItem('familyId', t);
+      }
+    }
+    else
+    {
+      localStorage.setItem('familyId', 'none');
+    }
     setTimeout(() => {
       if (this.$response.userInfo.role === 'USR')
       {

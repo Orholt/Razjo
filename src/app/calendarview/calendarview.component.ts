@@ -1,3 +1,4 @@
+import { GetNotesforMonth } from './models/CalGetNotesForMonth';
 import { IGetNotesforMonth } from './models/ICalGetNotesForMonth';
 import { CalendarserviceService } from './calendarservice.service';
 import { NotesService } from './../addnote/notes.service';
@@ -63,16 +64,16 @@ export class CalendarviewComponent implements OnInit {
   {
     let x: IGetNotesforMonth =
     {
-      familyId: 'xd',
+      familyId: this.calendarService.familyId,
       month: (new Date().getMonth() + 1).toString()
     };
 
-    let $res;
+    let $res: GetNotesforMonth[];
     this.calendarService.getNotesForMonth(x).subscribe({
       next: data => {
         $res = data;
         this.overlay = false;
-        console.log(data);
+        console.log($res);
       },
       error: err => {
         Swal.fire({

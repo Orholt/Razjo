@@ -20,6 +20,7 @@ export class CalendarserviceService {
 
   apiUrl = 'https://razjoapi.herokuapp.com/api';
   reqHeader;
+  familyId;
   public events: CalendarEvent[];
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,8 @@ export class CalendarserviceService {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')
      });
+
+     this.familyId = localStorage.getItem('familyId'); // !important
     }
 
     addNote(note: IAddNote)
