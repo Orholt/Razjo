@@ -23,7 +23,7 @@ export class CalendarviewComponent implements OnInit {
 
   events: CalendarEvent[] = [
     {
-      title: 'Or click me',
+      title: 'Notatka',
       color: colors.yellow,
       start: new Date(),
     },
