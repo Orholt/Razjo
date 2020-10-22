@@ -9,6 +9,9 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
   styleUrls: ['./calendarview.component.css']
 })
 export class CalendarviewComponent implements OnInit {
+
+  locale: string = 'pl';
+
   view: CalendarView = CalendarView.Month;
 
   viewDate: Date = new Date();
@@ -25,6 +28,7 @@ export class CalendarviewComponent implements OnInit {
   ngOnInit(): void {
     this.overlay = false;
   }
+
 
   logOut()
   {

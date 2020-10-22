@@ -28,6 +28,7 @@
             <mwl-calendar-month-view
               *ngSwitchCase="'month'"
               [viewDate]="viewDate"
+              [locale] = 'locale'
               [events]="events"
               (columnHeaderClicked)="clickedColumn = $event.isoDayNumber"
               (dayClicked)="clickedDate = $event.day.date"
@@ -37,6 +38,7 @@
               *ngSwitchCase="'week'"
               [viewDate]="viewDate"
               [events]="events"
+              [locale] = 'locale'
               (dayHeaderClicked)="clickedDate = $event.day.date"
               (hourSegmentClicked)="clickedDate = $event.date"
             >
@@ -44,6 +46,7 @@
             <mwl-calendar-day-view
               *ngSwitchCase="'day'"
               [viewDate]="viewDate"
+              [locale] = 'locale'
               [events]="events"
               (hourSegmentClicked)="clickedDate = $event.date"
             >

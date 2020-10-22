@@ -20,6 +20,10 @@ import { AllnotesComponent } from './allnotes/allnotes.component';
 import { CalendarviewComponent } from './calendarview/calendarview.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import localePl from '@angular/common/locales/pl';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePl);
 
 
 @NgModule({
