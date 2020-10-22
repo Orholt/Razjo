@@ -83,6 +83,7 @@ export class CalendarviewComponent implements OnInit {
           };
           this.events.push($tab);
         });
+        console.log(this.events);
       },
       error: err => {
         Swal.fire({
