@@ -57,6 +57,7 @@ export class CalendarviewComponent implements OnInit {
   }
 
 //#region calendarservice
+// tslint:disable: prefer-const
   // !CalendaService
   getNotesForThisMonth()
   {
