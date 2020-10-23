@@ -1,2 +1,13 @@
-<p>family-listing works!</p>
-<button (click)="test()">Test</button>
+<div class="container">
+  <div *ngFor="let family of families"  class="fmly">
+    <div class="jumbotron animate__animated animate__fadeIn">
+      <h2 class="display-5">{{family.familyName}}</h2>
+      <div class="invicode">
+        <h2 class="code">Kod zaproszenia:</h2>
+        <div class="form-group">
+          <input (click)="copyCode(family.invitationCode)" type='text' value={{family.invitationCode}} class="form-control" readonly>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>

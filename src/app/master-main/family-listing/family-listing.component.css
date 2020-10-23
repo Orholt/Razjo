@@ -1,0 +1,34 @@
+.jumbotron
+{
+  padding: 1vw 1vw 1vw 1vw;
+  border-radius: 30px;
+  background: rgba(214, 214, 214, 0.4);
+}
+.container
+{
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+.form-control
+{
+  font-weight: bold;
+  text-align: center;
+}
+.form-group
+{
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+.form-group input:hover
+{
+  transform: scale(1.1);
+}
+.code
+{
+  font-size: larger;
+  padding-bottom: 0.2vw;
+}
+.invicode
+{
+  padding-top: 0.5vw;
+}

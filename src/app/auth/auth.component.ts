@@ -3,7 +3,7 @@ import { CalendarserviceService } from './../calendarview/calendarservice.servic
 import { Component, OnInit } from '@angular/core';
 import { User } from './User';
 import { LoginService } from './login.service';
-import { IUserObj } from './UserObjG';
+import { IUserObj, Family } from './UserObjG';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -20,6 +20,7 @@ export class AuthComponent implements OnInit {
   $response: IUserObj;
   usr: User;
   overlay;
+  $families: Family[];
 
   ngOnInit(): void {
     this.loginfield = document.getElementById('email') as HTMLInputElement;
@@ -43,9 +44,10 @@ export class AuthComponent implements OnInit {
       next: data => {
         this.$response = data;
         this.loginservice.$reqObj = this.$response;
-        this.familyService.reqObj = this.$response;
+        this.$families = this.$response.families;
         this.overlay = false;
         this.familyHandler();
+        this.storeFamilies(this.$families);
         this.afterPost();
       },
       error: error => {
@@ -97,6 +99,11 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/masterMain']);
       }
     }, 500);
+  }
+
+  storeFamilies(x: Family[])
+  {
+    localStorage.setItem('x', JSON.stringify(x));
   }
 
 }
