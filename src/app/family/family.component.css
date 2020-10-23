@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-size: 100% auto;
     position: sticky;
-    height: 100vh;
+    height: 104vh;
     width: 100%;
 }
 .overlay
@@ -52,7 +52,7 @@ img:hover
 }
 .note
 {
-    margin-top: 3vw;
+    margin-top: 2vw;
 }
 .form-control-lg
 {
@@ -87,15 +87,25 @@ img:hover
 .mat-icon {
     vertical-align: middle;
  }
- .content
+ .eminput
  {
-     margin-top: 2vw;
+  background-color: white !important;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bolder;
  }
- .jumbotron
+ .codeinput
  {
-    border-radius: 30px 30px 30px 30px;
-    padding: 1vw 0.5vw 1vw 0.5vw;
-    background: rgba(255, 208, 0, 0.4);
+   text-align: center !important;
+   font-size: x-large;
+   font-weight: bolder;
+   background-color: white !important;
+ }
+ .codoutput
+ {
+   text-align: center !important;
+   font-weight: bolder;
+   font-size: x-large;
  }
  .noteText
  {
@@ -112,6 +122,83 @@ img:hover
  a:hover
  {
      transform: scale(1.1);
+ }
+
+.crim
+{
+    background-color:#ce2a4b !important;
+    color: white;
+}
+.ft
+{
+    line-height: normal;
+}
+
+.btnw
+{
+    right: 1vw;
+    position: absolute;
+}
+.t1
+{
+    margin: 0;
+    font-weight: 400;
+    font-size: 200%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.notes
+{
+    height: 80%;
+}
+.notes h1
+{
+    font-weight: 400;
+    font-size: 400%;
+    padding-top: 2vw;
+    padding-bottom: 2vh;
+}
+.typo
+{
+    font-weight: 400;
+    font-size: 3vw;
+    padding-top: 1vw;
+    padding-bottom: 0.3vw;
+}
+.notes h2
+{
+    font-weight: 400;
+    font-size: 2vw;
+    padding-bottom: 0.8vw;
+}
+.notes p
+{
+    font-size: 1vw;
+
+}
+.mat-icon {
+    vertical-align: middle;
+ }
+ .content
+ {
+     margin-top: 1vw;
+ }
+ .jumbotron
+ {
+    border-radius: 30px 30px 30px 30px;
+    padding: 1vw 0.5vw 1vw 0.5vw;
+    background: rgba(233,236, 239, 0.4);
+ }
+ .jumbotron a:hover
+ {
+     transform: scale(1.1);
+ }
+ .container :hover
+ {
+     background: rgba(233,236, 239, 1)
  }
 
 .crim
