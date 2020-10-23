@@ -1,3 +1,4 @@
+import { LoginService } from './../auth/login.service';
 import { IFamilySendMailWithCode } from './models/IFamilySendMailWithCode';
 import { IFamilyJoin } from './models/IFamilyJoin';
 import { FamilyCreate } from './models/FamilyCreate';
@@ -24,7 +25,7 @@ export class FamilyComponent implements OnInit {
   familyId;
   $res: FamilyCreate;
 
-  constructor(private notesService: NotesService, private familyService: FamilyService) { }
+  constructor(private notesService: NotesService, private familyService: FamilyService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.checkOut();
@@ -101,8 +102,10 @@ export class FamilyComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Zakończono pomyślnie!',
-          text: 'Pomyślnie dołączono do rodziny!'
+          text: 'Pomyślnie dołączono do rodziny!',
+          footer: 'Za chwilę nastąpi wylogowanie'
         });
+        this.notesService.logOut();
       },
       error: err => {
         Swal.fire({
@@ -130,7 +133,7 @@ export class FamilyComponent implements OnInit {
           icon: 'success',
           title: 'Zakończono pomyślnie!',
           text: 'Pomyślnie wysłano kod z zaproszeniem!',
-          footer: '<b>Adres email:</b> ' + this.emailToSend.value
+          footer: '<br>Adres email: </br>' + this.emailToSend.value
         });
         this.emailToSend.value = '';
       },

@@ -15,11 +15,12 @@
     <img [routerLink]="['']" src="../assets/auth/logo.png" alt="logo" class="logo">
   </div>
   <div class="auth">
+    <form autocomplete="off">
     <div class="form-group animate__animated animate__fadeIn">
       <input type="email" required id="email" class="form-control" placeholder="Adres email">
     </div>
     <div class="form-group animate__animated animate__fadeIn">
-        <input type="text" required id="name" class="form-control" placeholder="Imię">
+        <input type="text" autocomplete="" required id="name" class="form-control" placeholder="Imię">
     </div>
     <div class="form-group animate__animated animate__fadeIn">
         <input type="text" required id="surname" class="form-control" placeholder="Nazwisko">
@@ -40,6 +41,7 @@
               </div>
           </div>
     </div>
+  </form>
     <input type="image" (click)='createUser()' class="zaloguj_btn animate__animated animate__bounceIn" src="../assets/auth/zarejestruj.png" alt="login">
     <pre class="pren">Zakładając konto w serwisie zgadzasz się z postanowieniami zawartymi w <a href="http://endless.horse" target="_blank">Regulaminie</a></pre>
   </div>
