@@ -1,3 +1,4 @@
+import { CalendarserviceService } from './../calendarview/calendarservice.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './User';
 import { LoginService } from './login.service';
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  constructor(private loginservice: LoginService, private router: Router) { }
+  constructor(private loginservice: LoginService, private calendarService: CalendarserviceService, private router: Router) { }
 
   loginfield; passwordfield;
   $response: IUserObj;
@@ -41,6 +42,7 @@ export class AuthComponent implements OnInit {
         this.$response = data;
         this.loginservice.$reqObj = this.$response;
         this.overlay = false;
+        this.calendarService.headerToToken();
         this.afterPost();
       },
       error: error => {
