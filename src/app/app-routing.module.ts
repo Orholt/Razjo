@@ -1,3 +1,4 @@
+import { FamilyComponent } from './family/family.component';
 import { CalendarviewComponent } from './calendarview/calendarview.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'addNote', component: AddnoteComponent},
   {path: 'allNotes', component: AllnotesComponent},
   {path: 'calendar', component: CalendarviewComponent},
+  {path: 'family', component: FamilyComponent},
   {path: '**', pathMatch: 'full', component: AuthComponent }
 ];
 

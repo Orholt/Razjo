@@ -83,10 +83,12 @@ export class AuthComponent implements OnInit {
     setTimeout(() => {
       if (this.$response.userInfo.role === 'USR')
       {
+        localStorage.setItem('role', 'USR');
         this.router.navigate(['/userMain']);
       }
       else if ( this.$response.userInfo.role === 'PSY')
       {
+        localStorage.setItem('role', 'PSY');
         this.router.navigate(['/masterMain']);
       }
     }, 500);

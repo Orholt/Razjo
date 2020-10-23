@@ -24,6 +24,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
 import { ContextMenuModule } from 'ngx-contextmenu';
+import { FamilyComponent } from './family/family.component';
 
 registerLocaleData(localePl);
 
@@ -40,7 +41,8 @@ registerLocaleData(localePl);
     CalendarComponent,
     AddnoteComponent,
     AllnotesComponent,
-    CalendarviewComponent
+    CalendarviewComponent,
+    FamilyComponent
   ],
   imports: [
     BrowserModule,

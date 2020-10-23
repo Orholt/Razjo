@@ -12,6 +12,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { colors } from './utils/colors';
+import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,9 @@ export class CalendarserviceService {
   reqHeader;
   familyId;
   familyIds: Array<string>;
+  manyfamilies: boolean;
 
-  public events: CalendarEvent[];
+  public events: CalendarEvent[] = [];
   constructor(private http: HttpClient) { }
 
     headerToToken()
@@ -36,10 +38,12 @@ export class CalendarserviceService {
       if (localStorage.getItem('familyId') === 'none')
      {
        this.familyId = 'none';
+       this.manyfamilies = false;
      }
      else if (!localStorage.getItem('familyId').startsWith('array$'))
      {
       this.familyId = localStorage.getItem('familyId');
+      this.manyfamilies = false;
      }
      else if (localStorage.getItem('familyId').startsWith('array$'))
      {
@@ -49,6 +53,7 @@ export class CalendarserviceService {
         arr = t.split('$');
         arr.shift();
         this.familyIds = arr;
+        this.manyfamilies = true;
      }
     }
 

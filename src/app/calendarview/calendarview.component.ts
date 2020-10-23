@@ -2,8 +2,8 @@ import { GetNotesforMonth } from './models/CalGetNotesForMonth';
 import { IGetNotesforMonth } from './models/ICalGetNotesForMonth';
 import { CalendarserviceService } from './calendarservice.service';
 import { NotesService } from './../addnote/notes.service';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { CalendarEvent, CalendarMonthViewBeforeRenderEvent, CalendarView } from 'angular-calendar';
 import { reduce } from 'rxjs/operators';
 import { colors } from './utils/colors';
 import { Subject } from 'rxjs';
@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
   selector: 'app-calendarview',
   templateUrl: './calendarview.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./calendarview.component.css']
+  styleUrls: ['./calendarview.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CalendarviewComponent implements OnInit {
 
@@ -23,15 +24,15 @@ export class CalendarviewComponent implements OnInit {
 
   view: CalendarView = CalendarView.Month;
 
+  refresh: Subject<any>;
+
   viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [
-    {
-      title: 'Notatka',
-      color: colors.yellow,
-      start: new Date(),
-    },
-  ];
+  events: CalendarEvent[] = [{
+    title: 'test',
+    color: colors.yellow,
+    start: new Date()
+  }];
 
   clickedDate: Date;
 
@@ -46,12 +47,17 @@ export class CalendarviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.overlay = false;
+    this.events = this.calendarService.events;
     this.calendarService.headerToToken();
     this.getNotesForThisMonth();
+    console.log(this.events);
+    this.refresh.next();
   }
 
-
+  testEventSystem()
+  {
+    console.log(this.events);
+  }
   logOut()
   {
     this.notesService.logOut();
@@ -80,10 +86,13 @@ export class CalendarviewComponent implements OnInit {
             title: 'Notatka',
             color: colors.yellow,
             start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
+            allDay: true
           };
           this.events.push($tab);
         });
-        console.log(this.events);
+        this.calendarService.events = this.events;
+        this.events = this.calendarService.events;
+        this.overlay = false;
       },
       error: err => {
         Swal.fire({
@@ -92,7 +101,6 @@ export class CalendarviewComponent implements OnInit {
           text: 'Wystąpił błąd pobierania danych',
           footer: err.error.errors
         });
-        this.overlay = false;
       }
     });
   }
