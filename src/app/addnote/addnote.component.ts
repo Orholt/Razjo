@@ -42,11 +42,8 @@ export class AddnoteComponent implements OnInit {
         this.$response = data;
         this.overlay = false;
         Swal.fire({
-          position: 'bottom-end',
           icon: 'success',
-          title: 'Pomyślnie utworzono notatkę ✔',
-          showConfirmButton: false,
-          timer: 1500
+          title: 'Pomyślnie utworzono notatkę ✔'
         });
         this.afterPost();
       },
