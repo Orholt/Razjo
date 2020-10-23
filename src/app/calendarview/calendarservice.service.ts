@@ -43,20 +43,22 @@ export class CalendarserviceService {
        this.familyId = 'none';
        this.manyfamilies = false;
      }
-     else if (!localStorage.getItem('familyId').startsWith('array$'))
+     else if (!localStorage.getItem('familyId').startsWith('array'))
      {
       this.familyId = localStorage.getItem('familyId');
       this.manyfamilies = false;
      }
-     else if (localStorage.getItem('familyId').startsWith('array$'))
+     else if (localStorage.getItem('familyId').startsWith('array'))
      {
         let t: string;
         let arr: Array<string>;
-        t = localStorage.getItem('familyId').startsWith('array$').toString();
+        t = localStorage.getItem('familyId').toString();
+        console.log(t);
         arr = t.split('$');
         arr.shift();
         this.familyIds = arr;
         this.manyfamilies = true;
+        console.log(arr);
      }
     }
 
@@ -70,6 +72,7 @@ export class CalendarserviceService {
     }
     getNotesForMonth(x: IGetNotesforMonth)
     {
+      this.headerToToken();
       return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getNotesForMonth', x, { headers: this.reqHeader });
     }
     addVisit(x: IAddVisit)

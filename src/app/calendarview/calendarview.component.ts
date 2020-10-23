@@ -49,6 +49,7 @@ export class CalendarviewComponent implements OnInit {
   ngOnInit(): void {
     this.events = this.calendarService.events;
     this.calendarService.headerToToken();
+    this.calendarService.familyHandler();
     this.getNotesForThisMonth();
     console.log(this.events);
     this.refresh.next();
