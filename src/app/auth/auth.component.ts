@@ -42,7 +42,6 @@ export class AuthComponent implements OnInit {
         this.$response = data;
         this.loginservice.$reqObj = this.$response;
         this.overlay = false;
-        this.calendarService.headerToToken();
         this.familyHandler();
         this.afterPost();
       },

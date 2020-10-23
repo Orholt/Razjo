@@ -1,3 +1,4 @@
+import { CalendarserviceService } from './../calendarview/calendarservice.service';
 import { NotesService } from './../addnote/notes.service';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { isDefined } from '@angular/compiler/src/util';
@@ -13,7 +14,7 @@ import { IUserObj } from '../auth/UserObjG';
 export class MainComponent implements OnInit {
 
   $request: IUserObj;
-  constructor(private loginService: LoginService, private noteService: NotesService) { }
+  constructor(private loginService: LoginService, private noteService: NotesService, private Calendarservice: CalendarserviceService) { }
 
   usrName = localStorage.getItem('usrName');
 
@@ -23,6 +24,7 @@ export class MainComponent implements OnInit {
     {
       this.usrName = 'Anon';
     }
+    this.Calendarservice.headerToToken();
   }
 
   logOut()
