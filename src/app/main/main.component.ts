@@ -14,6 +14,7 @@ import { IUserObj } from '../auth/UserObjG';
 export class MainComponent implements OnInit {
 
   $request: IUserObj;
+  areThereAnyNotes;
   constructor(private loginService: LoginService, private noteService: NotesService, private Calendarservice: CalendarserviceService) { }
 
   usrName = localStorage.getItem('usrName');
@@ -25,6 +26,7 @@ export class MainComponent implements OnInit {
       this.usrName = 'Anon';
     }
     this.Calendarservice.headerToToken();
+    this.areThereAnyNotes = this.noteService.areThereAnyNotes;
   }
 
   logOut()

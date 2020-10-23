@@ -34,6 +34,7 @@ export class NotesComponent implements OnInit {
         {
           this.areThereAnyNotes = false;
         }
+        this.notesService.areThereAnyNotes = this.areThereAnyNotes;
       },
       error: err => {
         Swal.fire({

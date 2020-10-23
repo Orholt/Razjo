@@ -15,6 +15,7 @@ export class NotesService {
   apiUrl = 'https://razjoapi.herokuapp.com/api';
   $notes: Array<INote>;
   header;
+  areThereAnyNotes: boolean;
   constructor(private http: HttpClient, private router: Router, private calendarService: CalendarserviceService) { }
 
   getNotes()

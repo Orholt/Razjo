@@ -52,7 +52,7 @@
         <div class="content">
           <app-calendar></app-calendar> <!--Kalendarz-->
           <!---app-calendarview></!---app-calendarview-->
-          <h2>Ostatnie notatki</h2>
+          <h2 *ngIf="areThereAnyNotes" >Ostatnie notatki</h2>
           <app-notes></app-notes> <!--Notatki-->
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { FamilyService } from './../master-main/family-listing/family.service';
 import { CalendarserviceService } from './../calendarview/calendarservice.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './User';
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  constructor(private loginservice: LoginService, private calendarService: CalendarserviceService, private router: Router) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private loginservice: LoginService, private familyService: FamilyService , private calendarService: CalendarserviceService, private router: Router) { }
 
   loginfield; passwordfield;
   $response: IUserObj;
@@ -41,6 +43,7 @@ export class AuthComponent implements OnInit {
       next: data => {
         this.$response = data;
         this.loginservice.$reqObj = this.$response;
+        this.familyService.reqObj = this.$response;
         this.overlay = false;
         this.familyHandler();
         this.afterPost();
@@ -91,8 +94,7 @@ export class AuthComponent implements OnInit {
       else if ( this.$response.userInfo.role === 'PSY')
       {
         localStorage.setItem('role', 'PSY');
-        // this.router.navigate(['/masterMain']);
-        this.router.navigate(['/userMain']);
+        this.router.navigate(['/masterMain']);
       }
     }, 500);
   }

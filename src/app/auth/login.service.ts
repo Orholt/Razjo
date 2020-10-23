@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { IUserObj } from './UserObjG';
+import { IUserObj, Family } from './UserObjG';
 import { User } from './User';
 
 @Injectable({
@@ -10,8 +10,9 @@ import { User } from './User';
 })
 export class LoginService {
   apiUrl = 'https://razjoapi.herokuapp.com/api';
-  $reqObj: IUserObj;
-  $response;
+  public $reqObj: IUserObj;
+  public $response;
+  public families: Family[];
   constructor(private http: HttpClient) { }
 
   loginUser(user: User)

@@ -25,6 +25,7 @@ import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { FamilyComponent } from './family/family.component';
+import { FamilyListingComponent } from './master-main/family-listing/family-listing.component';
 
 registerLocaleData(localePl);
 
@@ -42,7 +43,8 @@ registerLocaleData(localePl);
     AddnoteComponent,
     AllnotesComponent,
     CalendarviewComponent,
-    FamilyComponent
+    FamilyComponent,
+    FamilyListingComponent
   ],
   imports: [
     BrowserModule,
