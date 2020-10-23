@@ -25,6 +25,7 @@
                               </div>
                               <h3>Godzina: {{item.creationDate.hour}}:{{item.creationDate.minute}}</h3>
                               <h3 class="">Data: {{item.creationDate.day}}-{{item.creationDate.month}}-{{item.creationDate.year}}</h3>
+                              <a (click)="noteEdit(item.id)" class="btn btn-warning"><b>Edytuj notatkę</b></a>
                           </div>
                       </div>
                   </div>

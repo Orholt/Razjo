@@ -1,5 +1,6 @@
 export interface INote
 {
+    id: string;
     message: string;
     creationDate: {
         year: string,

@@ -46,7 +46,7 @@
                 <a class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Wyślij zaproszenie</a>
               </div>
             </div>
-            <div>
+            <div *ngIf="hasFamily" >
               <h1 class="display-1 mb-4">Należysz już do rodziny</h1>
               <h2>ID twojej rodziny: <b>{{familyId}}</b></h2>
             </div>

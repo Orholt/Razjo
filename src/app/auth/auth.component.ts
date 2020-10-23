@@ -60,7 +60,8 @@ export class AuthComponent implements OnInit {
 // tslint:disable: no-unused-expression
   familyHandler()
   {
-    if (this.$response.families[0] !== null || this.$response.families[0] !== undefined)
+    localStorage.setItem('familyId', 'none');
+    if (this.$response.families[0] !== null || this.$response.families[0] !== undefined || this.$response.families.length === 0)
     {
       if (this.$response.families.length === 1)
       {
@@ -76,10 +77,6 @@ export class AuthComponent implements OnInit {
         console.log(t);
         localStorage.setItem('familyId', t);
       }
-    }
-    else
-    {
-      localStorage.setItem('familyId', 'none');
     }
   }
   afterPost()

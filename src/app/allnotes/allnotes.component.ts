@@ -1,8 +1,10 @@
+import { INoteUpdate } from './INoteUpdate';
 import { trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { INote } from '../addnote/Note';
 import { NotesService } from '../addnote/notes.service';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-allnotes',
@@ -42,6 +44,60 @@ export class AllnotesComponent implements OnInit {
           footer: err.error.errors
         });
         this.overlay = false;
+      }
+    });
+  }
+
+  noteEdit(itemId: string)
+  {
+    let text: string;
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-warning',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+      icon: 'question',
+      title: 'Edycja notatki',
+      text: 'Podaj treść notatki',
+      input: 'textarea',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Zapisz zmiany',
+      cancelButtonText: 'Anuluj',
+      preConfirm: (input) => {
+        text = input;
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // żądanie
+        const x: INoteUpdate = {
+          noteId: itemId,
+          message: text
+        };
+
+        this.noteservice.updateNote(x).subscribe({
+          next: data => {
+            swalWithBootstrapButtons.fire(
+              'Edycja zakończona!',
+              'Pomyślnie zakończono edycję notatki.',
+              'success'
+            );
+            this.ngOnInit();
+          },
+          error: err => {
+            Swal.fire({
+              title: 'Wystąpił błąd!',
+              text: 'Wystąpił błąd podczas edycji notatki!',
+              footer: err.error.errors,
+              icon: 'error'
+            });
+          }
+        });
       }
     });
   }

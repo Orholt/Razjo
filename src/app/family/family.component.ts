@@ -49,7 +49,7 @@ export class FamilyComponent implements OnInit {
     {
       this.hasFamily = true;
     }
-    else
+    else if (localStorage.getItem('familyId') === 'none')
     {
       this.hasFamily = false;
     }
