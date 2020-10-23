@@ -21,15 +21,17 @@ export class FamilyComponent implements OnInit {
   emailToSend;
   isPSY = true;
   hasFamily;
+  familyId;
 
   constructor(private notesService: NotesService, private familyService: FamilyService) { }
 
   ngOnInit(): void {
-    // this.checkOut();
+    this.checkOut();
     this.familyName = document.getElementById('nazwaRodziny');
     this.generatedCode = document.getElementById('generatedCode');
     this.invitationCode = document.getElementById('invitationCode');
     this.emailToSend = document.getElementById('emailToSend');
+    this.familyId = localStorage.getItem('familyId');
   }
 
   checkOut()
