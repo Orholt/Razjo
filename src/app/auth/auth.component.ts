@@ -91,7 +91,8 @@ export class AuthComponent implements OnInit {
       else if ( this.$response.userInfo.role === 'PSY')
       {
         localStorage.setItem('role', 'PSY');
-        this.router.navigate(['/masterMain']);
+        // this.router.navigate(['/masterMain']);
+        this.router.navigate(['/userMain']);
       }
     }, 500);
   }

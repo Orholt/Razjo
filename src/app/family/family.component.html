@@ -23,17 +23,17 @@
                   <input type="text" id="nazwaRodziny" class="form-control codeinput mb-3" placeholder="Nazwa rodziny">
                   <input type="text" id="generatedCode" class="form-control codoutput" placeholder="Twój wygenerowany kod" readonly>
                 </div>
-                <a class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2 mt-1" role="button">Stwórz rodzinę</a>
+                <a (click)="createFamily()" class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2 mt-1" role="button">Stwórz rodzinę</a>
               </div>
             </div>
-            <div *ngIf="!hasFamily"  class="container animate__animated animate__fadeIn">
+            <div *ngIf="!hasFamily && !isPSY"  class="container animate__animated animate__fadeIn">
               <div class="jumbotron j2 mt-2 mb-3">
                 <h2 class="ft">Dołącz do rodziny</h2>
                 <p class="lead mt-1 mb-4">Ta sekcja pozwala na dołączenie do rodziny</p>
                 <div class="form-group pr-5 pl-5">
                   <input type="text" id="invitationCode" class="form-control codeinput" placeholder="Kod zaproszenia">
                 </div>
-                <a class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2 mt-1" role="button">Dołączenie do rodziny</a>
+                <a (click)="joinFamily()" class="btn btn-lg crim pl-5 pr-5 pt-2 pb-2 mt-1" role="button">Dołączenie do rodziny</a>
               </div>
             </div>
             <div *ngIf="isPSY"  class="container animate__animated animate__fadeIn">
@@ -43,7 +43,7 @@
                 <div class="form-group pr-5 pl-5">
                   <input id="emailToSend" type="email" class="form-control eminput" placeholder="Adres email">
                 </div>
-                <a class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Wyślij zaproszenie</a>
+                <a (click)="sendMailWithCodeFamily()" class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Wyślij zaproszenie</a>
               </div>
             </div>
             <div *ngIf="hasFamily" >

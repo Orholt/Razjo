@@ -23,14 +23,17 @@ export class FamilyService {
 
   createFamily(x: IFamilyCreate)
   {
-      return this.http.post<FamilyCreate>(this.apiUrl + '/Family/create', x, { headers: this.calendarService.reqHeader });
+    this.calendarService.headerToToken();
+    return this.http.post<FamilyCreate>(this.apiUrl + '/Family/create', x, { headers: this.calendarService.reqHeader });
   }
   joinFamily(x: IFamilyJoin)
   {
-      return this.http.post<FamilyJoin>(this.apiUrl + '/Family/join', x, { headers: this.calendarService.reqHeader });
+    this.calendarService.headerToToken();
+    return this.http.post<FamilyJoin>(this.apiUrl + '/Family/join', x, { headers: this.calendarService.reqHeader });
   }
   sendMailWithCodeFamily(x: IFamilySendMailWithCode)
   {
-      return this.http.post(this.apiUrl + '/Family/create', x, { headers: this.calendarService.reqHeader });
+    this.calendarService.headerToToken();
+    return this.http.post(this.apiUrl + '/Family/create', x, { headers: this.calendarService.reqHeader });
   }
 }

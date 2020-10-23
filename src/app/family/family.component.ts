@@ -22,16 +22,21 @@ export class FamilyComponent implements OnInit {
   isPSY = true;
   hasFamily;
   familyId;
+  $res: FamilyCreate;
 
   constructor(private notesService: NotesService, private familyService: FamilyService) { }
 
   ngOnInit(): void {
     this.checkOut();
+    this.familyId = localStorage.getItem('familyId');
+  }
+
+  getElements()
+  {
     this.familyName = document.getElementById('nazwaRodziny');
     this.generatedCode = document.getElementById('generatedCode');
     this.invitationCode = document.getElementById('invitationCode');
     this.emailToSend = document.getElementById('emailToSend');
-    this.familyId = localStorage.getItem('familyId');
   }
 
   checkOut()
@@ -61,30 +66,32 @@ export class FamilyComponent implements OnInit {
   createFamily()
   {
     this.overlay = true;
+    this.getElements();
     let x: IFamilyCreate = {
-      familyname: this.familyName.value
+      familyName: this.familyName.value
     };
+
     this.familyService.createFamily(x).subscribe({
       next: data => {
-        let $res: FamilyCreate;
-        data = $res;
-        this.invitationCode.value = $res.invitationCode;
+        this.$res = data;
+        this.generatedCode.value = data.invitationCode;
         this.overlay = false;
       },
       error: err => {
         Swal.fire({
           icon: 'error',
           title: 'Wystąpił błąd!',
-          text: 'Wystąpił błąd podczas generowania kodu',
+          text: 'Wystąpił błąd pobierania danych',
           footer: err.error.errors
         });
-        this.overlay = false;
       }
     });
   }
+
   joinFamily()
   {
     this.overlay = true;
+    this.getElements();
     let x: IFamilyJoin = {
       invitationCode: this.invitationCode.value
     };
@@ -111,6 +118,7 @@ export class FamilyComponent implements OnInit {
   sendMailWithCodeFamily()
   {
     this.overlay = true;
+    this.getElements();
     let x: IFamilySendMailWithCode = {
       familyId: localStorage.getItem('familyId'),
       email: this.emailToSend.value
