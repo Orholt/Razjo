@@ -34,7 +34,10 @@ export class CalendarserviceService {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')
      });
+    }
 
+    familyHandler()
+    {
       if (localStorage.getItem('familyId') === 'none')
      {
        this.familyId = 'none';

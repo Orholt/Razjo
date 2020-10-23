@@ -43,6 +43,7 @@ export class AuthComponent implements OnInit {
         this.loginservice.$reqObj = this.$response;
         this.overlay = false;
         this.calendarService.headerToToken();
+        this.familyHandler();
         this.afterPost();
       },
       error: error => {
@@ -57,10 +58,8 @@ export class AuthComponent implements OnInit {
   });
   }
 // tslint:disable: no-unused-expression
-  afterPost()
+  familyHandler()
   {
-    localStorage.setItem('token', this.$response.token);
-    localStorage.setItem('usrName', this.$response.userInfo.firstName);
     if (this.$response.families[0] !== null || this.$response.families[0] !== undefined)
     {
       if (this.$response.families.length === 1)
@@ -82,6 +81,11 @@ export class AuthComponent implements OnInit {
     {
       localStorage.setItem('familyId', 'none');
     }
+  }
+  afterPost()
+  {
+    localStorage.setItem('token', this.$response.token);
+    localStorage.setItem('usrName', this.$response.userInfo.firstName);
     setTimeout(() => {
       if (this.$response.userInfo.role === 'USR')
       {
