@@ -75,6 +75,7 @@ export class CalendarviewComponent implements OnInit {
     this.noteText = document.getElementById('textBox') as HTMLInputElement;
   }
 
+  // pobiera notatki i wizyty
   fetchForNotes()
   {
     // ! spr ilości rodzin
@@ -101,16 +102,19 @@ export class CalendarviewComponent implements OnInit {
       this.refresh.next();
     }
   }
+
   testEventSystem()
   {
     console.log(this.events);
     this.fetchElements();
     console.log(this.selector.selectedIndex);
   }
+
   back()
   {
     this.location.back();
   }
+
   logOut()
   {
     this.notesService.logOut();
@@ -185,6 +189,7 @@ export class CalendarviewComponent implements OnInit {
       }
     });
   }
+
 
   // !
 //#endregion
