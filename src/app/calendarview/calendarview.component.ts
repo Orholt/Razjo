@@ -26,30 +26,21 @@ export class CalendarviewComponent implements OnInit {
   constructor(private notesService: NotesService, private calendarService: CalendarserviceService, private location: Location, private ref: ChangeDetectorRef ) { }
 
   locale = 'pl';
-
   view: CalendarView = CalendarView.Month;
-
   refresh: Subject<any> = new Subject();
-
   viewDate: Date = new Date();
-
   events: CalendarEvent[] = [{
     title: 'test',
     color: colors.yellow,
     start: new Date()
   }];
-
   clickedDate: Date;
-
   clickedColumn: number;
-
   overlay;
-
   hasManyFamilies: boolean;
-
   hasAnyFamily: boolean;
-
   families: Family[] = [];
+  isPSY = false;
 
   addEvent(date: any): void {
 
@@ -61,6 +52,7 @@ export class CalendarviewComponent implements OnInit {
     this.events = this.calendarService.events;
     this.calendarService.headerToToken();
     this.calendarService.familyHandler();
+    if (localStorage.getItem('role') === 'PSY') { this.isPSY = true; }
     this.families = JSON.parse(localStorage.getItem('x'));
     this.fetchForNotes();
   }

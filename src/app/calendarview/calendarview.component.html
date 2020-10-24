@@ -14,7 +14,15 @@
     <!------UI-->
     <div class="ml-4 pt-4 mr-4 text-center">
         <div class="notes">
-
+          <div *ngIf="isPSY"  class="selector">
+            <h2 class="ft">Wybór rodziny</h2>
+            <p class="lead mt-2 mb-4">Wybierz rodzinę dla której chcesz przeglądać kalendarz</p>
+            <div class="form-group pr-5 pl-5">
+              <select id="seldel" class="form-control mb-2">
+                <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
+              </select>
+            </div>
+          </div>
           <!--div class="alert alert-info">
             Click on a day or time slot on the view.
             <strong *ngIf="clickedDate"
@@ -52,6 +60,32 @@
               (hourSegmentClicked)="clickedDate = $event.date"
             >
             </mwl-calendar-day-view>
+            <!-----Po kalendarzu, przyciski------>
+            <div *ngIf="isPSY" class=" ctn note animate__animated animate__fadeIn">
+              <div class="row">
+                  <div class="col">
+                      <div class="jumbotron animate__animated animate__fadeIn">
+                          <h2 class="mt-2 pt-0">Dodawanie notatki</h2>
+                          <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
+
+                          </div>
+                          <a class="mt-1 editbtn btn btn-warning"><b>Dodaj notatkę</b></a>
+                      </div>
+                  </div>
+                  <div class="col">
+                    <div class="jumbotron animate__animated animate__fadeIn">
+                        <h2 class="mt-2 pt-0">Dodawanie wizyty</h2>
+                        <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
+                          <div class="form-group">
+                            <label for="InputData1"><b>Data:</b></label>
+                            <input type="date" class="form-control" id="InputData1" aria-describedby="emailHelp" placeholder="Enter email">
+                          </div>
+                        </div>
+                        <a class="mt-1 editbtn btn btn-warning"><b>Dodaj wizytę</b></a>
+                    </div>
+                </div>
+              </div>
+          </div>
           </div>
         </div>
     </div>
