@@ -25,7 +25,7 @@ export class FamilyComponent implements OnInit {
   hasFamily;
   familyId;
   $res: FamilyCreate;
-  familises: Family[];
+  familises: FamilyCreate[];
 
   constructor(private notesService: NotesService, private familyService: FamilyService, private loginService: LoginService) { }
 
@@ -89,6 +89,17 @@ export class FamilyComponent implements OnInit {
   {
     this.overlay = true;
     this.getElements();
+    if (this.familyName.value === '')
+    {
+      this.overlay = false;
+      Swal.fire({
+        icon: 'error',
+        title: 'Wystąpił błąd!',
+        text: 'Pole z nazwą rodziny nie może być puste!'
+      });
+    }
+    else
+    {
     let x: IFamilyCreate = {
       familyName: this.familyName.value
     };
@@ -98,6 +109,7 @@ export class FamilyComponent implements OnInit {
         this.$res = data;
         this.generatedCode.value = data.invitationCode;
         this.overlay = false;
+        this.afterFamilyCreate(data);
       },
       error: err => {
         Swal.fire({
@@ -108,6 +120,7 @@ export class FamilyComponent implements OnInit {
         });
       }
     });
+  }
   }
 
   joinFamily()
@@ -175,6 +188,11 @@ export class FamilyComponent implements OnInit {
   logOut()
   {
     this.notesService.logOut();
+  }
+
+  afterFamilyCreate(x: FamilyCreate)
+  {
+    this.familises.push(x);
   }
 
 }
