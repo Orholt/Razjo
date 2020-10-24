@@ -56,7 +56,7 @@ export class CalendarviewComponent implements OnInit {
 
   addEvent(date: any): void {
 
-    console.log(date);
+    // console.log(date);
     // this.refresh.next();
   }
 
@@ -157,13 +157,24 @@ export class CalendarviewComponent implements OnInit {
       hour: event.start.getHours().toString(),
       minute: ('0' + event.start.getMinutes().toString() ).slice(-2)
     };
-    Swal.fire({
-      icon: 'info',
-      title: event.title,
-      text: event.meta,
-      footer: `Data: ${t.day}.${t.month}.${t.year} <br/> Godzina: ${t.hour}:${t.minute}`
-    });
-    console.log(event);
+    if (event.id === 'visit')
+    {
+      Swal.fire({
+        icon: 'info',
+        title: event.title,
+        text: event.meta,
+        footer: `Data: ${t.day}.${t.month}.${t.year} <br/> Godzina: ${t.hour}:${t.minute}`
+      });
+    }
+    else
+    {
+      Swal.fire({
+        icon: 'info',
+        title: event.title,
+        text: event.meta,
+        footer: `Data: ${t.day}.${t.month}.${t.year} <br/>`
+      });
+    }
   }
 
 //#region calendarservice
@@ -181,6 +192,7 @@ export class CalendarviewComponent implements OnInit {
         data.forEach(element => {
           $tab = {
             title: 'Notatka',
+            id: 'note',
             color: colors.yellow,
             // tslint:disable-next-line: max-line-length
             start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10), parseInt(element.date.hour, 10), parseInt(element.date.minute, 10)),
@@ -219,6 +231,7 @@ export class CalendarviewComponent implements OnInit {
         data.forEach(element => {
           $tab = {
             title: 'Wizyta',
+            id: 'visit',
             color: colors.red,
             // tslint:disable-next-line: max-line-length
             start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10), parseInt(element.date.hour, 10), parseInt(element.date.minute, 10)),

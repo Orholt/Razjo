@@ -55,12 +55,12 @@ export class CalendarserviceService {
         let t: string;
         let arr: Array<string>;
         t = localStorage.getItem('familyId').toString();
-        console.log(t);
+        // console.log(t);
         arr = t.split('$');
         arr.shift();
         this.familyIds = arr;
         this.manyfamilies = true;
-        console.log(arr);
+        // console.log(arr);
      }
     }
 
