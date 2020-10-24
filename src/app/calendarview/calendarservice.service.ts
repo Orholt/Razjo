@@ -67,29 +67,30 @@ export class CalendarserviceService {
       this.headerToToken();
       return this.http.post<AddNote>(this.apiUrl + '/Calendar/addNote', note, { headers: this.reqHeader });
     }
-    getLastNotes(familyId: ICalGetLastNotes)
+    getLastNotes(familyId: string)
     {
       this.headerToToken();
-      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastNotes', { headers: this.reqHeader });
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + `/Calendar/getLastNotes/${familyId}`, { headers: this.reqHeader });
     }
-    getNotesForMonth(x: IGetNotesforMonth)
+    getNotesForMonth(familyId: string, month: string)
     {
       this.headerToToken();
-      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getNotesForMonth', { headers: this.reqHeader });
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + `/Calendar/getNotesForMonth/${familyId}/${month}`, { headers: this.reqHeader });
     }
     addVisit(x: IAddVisit)
     {
       this.headerToToken();
       return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/addVisit', x, { headers: this.reqHeader });
     }
-    getLastVisits(x: IGetLastVisits)
+    getLastVisits(familyId: string)
     {
       this.headerToToken();
-      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastVisits', { headers: this.reqHeader });
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + `/Calendar/getLastVisits/${familyId}`, { headers: this.reqHeader });
     }
-    getVisitsForMonth(x: IGetVisitsforMonth)
+    getVisitsForMonth(familyId: string, month: string)
     {
       this.headerToToken();
-      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getVisitsForMonth', { headers: this.reqHeader });
+      // tslint:disable-next-line: max-line-length
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + `/Calendar/getVisitsForMonth/${familyId}/${month}`, { headers: this.reqHeader });
     }
 }

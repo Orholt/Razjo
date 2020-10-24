@@ -1,3 +1,4 @@
+import { Family } from './../auth/UserObjG';
 import { Location } from '@angular/common';
 import { GetLastVisits } from './models/GetLastVisits';
 import { IGetVisitsforMonth } from './models/IGetVisitsForMonth';
@@ -43,6 +44,12 @@ export class CalendarviewComponent implements OnInit {
 
   overlay;
 
+  hasManyFamilies: boolean;
+
+  hasAnyFamily: boolean;
+
+  families: Family[] = [];
+
   addEvent(date: any): void {
 
     console.log(date);
@@ -53,11 +60,32 @@ export class CalendarviewComponent implements OnInit {
     this.events = this.calendarService.events;
     this.calendarService.headerToToken();
     this.calendarService.familyHandler();
-    this.getNotesForThisMonth();
+    this.families = JSON.parse(localStorage.getItem('x'));
+    this.fetchForNotes();
     console.log(this.events);
-    this.refresh.next();
   }
 
+  fetchForNotes()
+  {
+    // ! spr ilości rodzin
+    if (this.families.length === 0)
+    {
+      this.hasAnyFamily = false;
+      this.hasManyFamilies = false;
+    }
+    else if (this.families.length === 1)
+    {
+      this.hasAnyFamily = true;
+      this.hasManyFamilies = false;
+      this.getNotesForThisMonth();
+      this.refresh.next();
+    }
+    else if (this.families.length > 1)
+    {
+      this.hasAnyFamily = true;
+      this.hasManyFamilies = true;
+    }
+  }
   testEventSystem()
   {
     console.log(this.events);
@@ -84,7 +112,7 @@ export class CalendarviewComponent implements OnInit {
 
     let $res: GetNotesforMonth[];
     let $tab: CalendarEvent;
-    this.calendarService.getNotesForMonth(x).subscribe({
+    this.calendarService.getLastNotes(x.familyId).subscribe({
       next: data => {
         $res = data;
         this.overlay = false;

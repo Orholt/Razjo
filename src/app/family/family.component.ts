@@ -199,7 +199,7 @@ export class FamilyComponent implements OnInit {
           icon: 'success',
           title: 'Zakończono pomyślnie!',
           text: 'Pomyślnie usunięto rodzinę!',
-          footer: '<b>Nazwa rodziny: </b>' + t
+          footer: `<b>Nazwa rodziny: </b> ${t}`
         });
         this.afterFamilyRemove(q);
       },
