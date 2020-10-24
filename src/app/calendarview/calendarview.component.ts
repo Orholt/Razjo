@@ -1,3 +1,4 @@
+import { DateClass } from './../family/models/FamilyCreate';
 import { IAddVisit } from './models/IAddVisit';
 import { AddVisit } from './models/AddVisit';
 import { IAddNote } from './models/IAddNote';
@@ -146,12 +147,23 @@ export class CalendarviewComponent implements OnInit {
     this.notesService.logOut();
   }
 
-  testDate()
+  eventClickd({ event }: { event: CalendarEvent })
   {
-    this.fetchElements();
-    // tslint:disable-next-line: prefer-const
-    let t = new Date(this.dataVisit.value);
-    console.log(t.getFullYear());
+    const t: DateClass =
+    {
+      day: event.start.getDate().toString(),
+      month: ('0' + (event.start.getMonth() + 1).toString().toString() ).slice(-2),
+      year: event.start.getFullYear().toString(),
+      hour: event.start.getHours().toString(),
+      minute: ('0' + event.start.getMinutes().toString() ).slice(-2)
+    };
+    Swal.fire({
+      icon: 'info',
+      title: event.title,
+      text: event.meta,
+      footer: `Data: ${t.day}.${t.month}.${t.year} <br/> Godzina: ${t.hour}:${t.minute}`
+    });
+    console.log(event);
   }
 
 //#region calendarservice
@@ -170,8 +182,10 @@ export class CalendarviewComponent implements OnInit {
           $tab = {
             title: 'Notatka',
             color: colors.yellow,
-            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
-            allDay: true
+            // tslint:disable-next-line: max-line-length
+            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10), parseInt(element.date.hour, 10), parseInt(element.date.minute, 10)),
+            allDay: true,
+            meta: element.message
           };
           this.events.push($tab);
           this.loopThroughObj(this.events);
@@ -206,8 +220,10 @@ export class CalendarviewComponent implements OnInit {
           $tab = {
             title: 'Wizyta',
             color: colors.red,
-            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
-            allDay: true
+            // tslint:disable-next-line: max-line-length
+            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10), parseInt(element.date.hour, 10), parseInt(element.date.minute, 10)),
+            allDay: true,
+            meta: element.message
           };
           this.events.push($tab);
           this.loopThroughObj(this.events);
@@ -352,6 +368,7 @@ export class CalendarviewComponent implements OnInit {
           title: res[i].title,
           color: res[i].color,
           repeating: res[i].repeating,
+          meta: res[i].meta,
           start: new Date(res[i].start),
           end: new Date(res[i].end)
         };
