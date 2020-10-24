@@ -26,12 +26,13 @@ import { registerLocaleData } from '@angular/common';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { FamilyComponent } from './family/family.component';
 import { FamilyListingComponent } from './master-main/family-listing/family-listing.component';
+import { NavbarUniformComponent } from './navbar-uniform/navbar-uniform.component';
 
 registerLocaleData(localePl);
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     MainComponent,
     MasterMainComponent,
@@ -44,8 +45,9 @@ registerLocaleData(localePl);
     AllnotesComponent,
     CalendarviewComponent,
     FamilyComponent,
-    FamilyListingComponent
-  ],
+    FamilyListingComponent,
+      NavbarUniformComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

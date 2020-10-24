@@ -1,0 +1,74 @@
+.display-4
+{
+  font-size: 3vw !important;
+}
+img:hover
+{
+    transform: scale(1.1);
+}
+.editbtn
+{
+  padding: 1vw 3vw 1vw 3vw;
+}
+.bg-custom
+{
+    background: white;
+}
+.btnw
+{
+    right: 1vw;
+    position: absolute;
+}
+.t1
+{
+    margin: 0;
+    font-weight: 400;
+    font-size: 200%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.typo
+{
+    font-weight: 400;
+    font-size: 3vw;
+    padding-top: 1vw;
+    padding-bottom: 0.3vw;
+}
+.mat-icon {
+    vertical-align: middle;
+ }
+ .content
+ {
+     margin-top: 2vw;
+ }
+ .jumbotron
+ {
+    border-radius: 30px 30px 30px 30px;
+    padding: 1vw 0.5vw 1vw 0.5vw;
+    background: rgba(255, 208, 0, 0.4);
+ }
+ .noteText
+ {
+    white-space: pre-line !important;
+    font-size: 1.5vw !important;
+ }
+ a
+ {
+     margin-top: 3vw;
+     padding-left: 4vw;
+     padding-right: 4vw;
+     padding-top: 2vw;
+     padding-bottom: 2vw;
+ }
+ a:hover
+ {
+     transform: scale(1.1);
+ }
+
+.ft
+{
+    line-height: normal;
+}
