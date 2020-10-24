@@ -25,6 +25,7 @@ export class CalendarviewComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   constructor(private notesService: NotesService, private calendarService: CalendarserviceService, private location: Location, private ref: ChangeDetectorRef ) { }
 
+  //#region variables
   locale = 'pl';
   view: CalendarView = CalendarView.Month;
   refresh: Subject<any> = new Subject();
@@ -41,6 +42,8 @@ export class CalendarviewComponent implements OnInit {
   hasAnyFamily: boolean;
   families: Family[] = [];
   isPSY = false;
+  selector: HTMLSelectElement;
+//#endregion
 
   addEvent(date: any): void {
 
@@ -57,6 +60,11 @@ export class CalendarviewComponent implements OnInit {
     this.fetchForNotes();
   }
 
+  fetchElements()
+  {
+    this.selector = document.getElementById('sel') as HTMLSelectElement;
+  }
+
   fetchForNotes()
   {
     // ! spr ilości rodzin
@@ -69,19 +77,25 @@ export class CalendarviewComponent implements OnInit {
     {
       this.hasAnyFamily = true;
       this.hasManyFamilies = false;
-      this.getNotesForThisMonth();
-      this.getVisitsForThisMonth();
+      this.getNotesForThisMonth(this.calendarService.familyId);
+      this.getVisitsForThisMonth(this.calendarService.familyId);
       this.refresh.next();
     }
     else if (this.families.length > 1)
     {
       this.hasAnyFamily = true;
       this.hasManyFamilies = true;
+      this.fetchElements();
+      this.getNotesForThisMonth(this.families[0].familyId);
+      this.getVisitsForThisMonth(this.families[0].familyId);
+      this.refresh.next();
     }
   }
   testEventSystem()
   {
     console.log(this.events);
+    this.fetchElements();
+    console.log(this.selector.selectedIndex);
   }
   back()
   {
@@ -95,17 +109,11 @@ export class CalendarviewComponent implements OnInit {
 //#region calendarservice
 // tslint:disable: prefer-const
   // !CalendaService
-  getNotesForThisMonth()
+  getNotesForThisMonth(familyId: string)
   {
-    let x: IGetNotesforMonth =
-    {
-      familyId: this.calendarService.familyId,
-      month: (new Date().getMonth() + 1).toString()
-    };
-
     let $res: GetNotesforMonth[];
     let $tab: CalendarEvent;
-    this.calendarService.getLastNotes(x.familyId).subscribe({
+    this.calendarService.getLastNotes(familyId).subscribe({
       next: data => {
         $res = data;
         this.overlay = false;
@@ -136,18 +144,12 @@ export class CalendarviewComponent implements OnInit {
     });
   }
 
-  getVisitsForThisMonth()
+  getVisitsForThisMonth(familyId: string)
   {
-    let x: IGetVisitsforMonth =
-    {
-      familyId: this.calendarService.familyId,
-      month: (new Date().getMonth() + 1).toString()
-    };
-    // !
     let $res: GetLastVisits[];
     let $tab: CalendarEvent;
     //
-    this.calendarService.getLastVisits(x.familyId).subscribe({
+    this.calendarService.getLastVisits(familyId).subscribe({
       next: data => {
         $res = data;
         this.overlay = false;

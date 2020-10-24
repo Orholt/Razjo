@@ -18,7 +18,7 @@
             <h2 class="ft">Wybór rodziny</h2>
             <p class="lead mt-2 mb-4">Wybierz rodzinę dla której chcesz przeglądać kalendarz</p>
             <div class="form-group pr-5 pl-5">
-              <select id="seldel" class="form-control mb-2">
+              <select id="sel" class="form-control mb-2">
                 <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
               </select>
             </div>
