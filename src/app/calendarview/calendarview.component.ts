@@ -6,7 +6,7 @@ import { GetNotesforMonth } from './models/CalGetNotesForMonth';
 import { IGetNotesforMonth } from './models/ICalGetNotesForMonth';
 import { CalendarserviceService } from './calendarservice.service';
 import { NotesService } from './../addnote/notes.service';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewBeforeRenderEvent, CalendarView } from 'angular-calendar';
 import { reduce } from 'rxjs/operators';
 import { colors } from './utils/colors';
@@ -16,19 +16,20 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-calendarview',
   templateUrl: './calendarview.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./calendarview.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class CalendarviewComponent implements OnInit {
 
-  constructor(private notesService: NotesService, private calendarService: CalendarserviceService, private location: Location) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private notesService: NotesService, private calendarService: CalendarserviceService, private location: Location, private ref: ChangeDetectorRef ) { }
 
   locale = 'pl';
 
   view: CalendarView = CalendarView.Month;
 
-  refresh: Subject<any>;
+  refresh: Subject<any> = new Subject();
 
   viewDate: Date = new Date();
 
@@ -62,7 +63,6 @@ export class CalendarviewComponent implements OnInit {
     this.calendarService.familyHandler();
     this.families = JSON.parse(localStorage.getItem('x'));
     this.fetchForNotes();
-    console.log(this.events);
   }
 
   fetchForNotes()
@@ -78,6 +78,7 @@ export class CalendarviewComponent implements OnInit {
       this.hasAnyFamily = true;
       this.hasManyFamilies = false;
       this.getNotesForThisMonth();
+      this.getVisitsForThisMonth();
       this.refresh.next();
     }
     else if (this.families.length > 1)
@@ -117,7 +118,6 @@ export class CalendarviewComponent implements OnInit {
         $res = data;
         this.overlay = false;
         // TODO: Przerabianie notatek;
-        this.events = [];
         data.forEach(element => {
           $tab = {
             title: 'Notatka',
@@ -126,10 +126,50 @@ export class CalendarviewComponent implements OnInit {
             allDay: true
           };
           this.events.push($tab);
+          this.loopThroughObj(this.events);
         });
         this.calendarService.events = this.events;
         this.events = this.calendarService.events;
         this.overlay = false;
+        console.log(this.events);
+      },
+      error: err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd pobierania danych',
+          footer: err.error.errors
+        });
+      }
+    });
+  }
+
+  getVisitsForThisMonth()
+  {
+    let x: IGetVisitsforMonth =
+    {
+      familyId: this.calendarService.familyId,
+      month: (new Date().getMonth() + 1).toString()
+    };
+    // !
+    let $res: GetLastVisits[];
+    let $tab: CalendarEvent;
+    //
+    this.calendarService.getLastVisits(x.familyId).subscribe({
+      next: data => {
+        $res = data;
+        this.overlay = false;
+        // TODO: Przerabianie wizyt;
+        data.forEach(element => {
+          $tab = {
+            title: 'Wizyta',
+            color: colors.red,
+            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
+            allDay: true
+          };
+          this.events.push($tab);
+          this.loopThroughObj(this.events);
+        });
       },
       error: err => {
         Swal.fire({
@@ -147,6 +187,25 @@ export class CalendarviewComponent implements OnInit {
 
   eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
+    }
+
+    loopThroughObj(res){
+      let obj: Array<any> = [];
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < res.length; i++) {
+        // tslint:disable-next-line: ban-types
+        let event: Object = {
+          id: res[i].id,
+          title: res[i].title,
+          color: res[i].color,
+          repeating: res[i].repeating,
+          start: new Date(res[i].start),
+          end: new Date(res[i].end)
+        };
+        obj.push(event);
+      }
+      this.events = obj;
+      this.refresh.next();
     }
 }
 

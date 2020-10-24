@@ -1,3 +1,5 @@
+import { GetLastVisits } from './models/GetLastVisits';
+import { AddVisit } from './models/AddVisit';
 import { IGetVisitsforMonth } from './models/IGetVisitsForMonth';
 import { IGetLastVisits } from './models/IGetLastVisits';
 import { IAddVisit } from './models/IAddVisit';
@@ -80,17 +82,17 @@ export class CalendarserviceService {
     addVisit(x: IAddVisit)
     {
       this.headerToToken();
-      return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/addVisit', x, { headers: this.reqHeader });
+      return this.http.post<AddVisit>(this.apiUrl + '/Calendar/addVisit', x, { headers: this.reqHeader });
     }
     getLastVisits(familyId: string)
     {
       this.headerToToken();
-      return this.http.get<CalGetLastNotes[]>(this.apiUrl + `/Calendar/getLastVisits/${familyId}`, { headers: this.reqHeader });
+      return this.http.get<GetLastVisits[]>(this.apiUrl + `/Calendar/getLastVisits/${familyId}`, { headers: this.reqHeader });
     }
     getVisitsForMonth(familyId: string, month: string)
     {
       this.headerToToken();
       // tslint:disable-next-line: max-line-length
-      return this.http.get<CalGetLastNotes[]>(this.apiUrl + `/Calendar/getVisitsForMonth/${familyId}/${month}`, { headers: this.reqHeader });
+      return this.http.get<GetLastVisits[]>(this.apiUrl + `/Calendar/getVisitsForMonth/${familyId}/${month}`, { headers: this.reqHeader });
     }
 }
