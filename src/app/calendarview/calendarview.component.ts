@@ -227,6 +227,8 @@ export class CalendarviewComponent implements OnInit {
   addNote()
   {
     this.fetchElements();
+    if (this.noteText.value !== '')
+    {
     let t: IAddNote = {
       familyId: this.families[this.selectorNote.selectedIndex].familyId,
       message: this.noteText.value
@@ -261,11 +263,22 @@ export class CalendarviewComponent implements OnInit {
         this.noteText.value = '';
       }
     });
+    }
+    else
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'Wystąpił błąd!',
+        text: 'Treść notatki nie może być pusta',
+      });
+    }
   }
 
   addVisit()
   {
     this.fetchElements();
+    if (this.dataVisit.value !== '' && this.noteText.value !== '')
+    {
     this.overlay = true;
     let q = new Date(this.dataVisit.value);
     let t: IAddVisit = {
@@ -279,9 +292,6 @@ export class CalendarviewComponent implements OnInit {
         year: q.getFullYear().toString()
       }
     };
-
-    console.log(t);
-
     this.calendarService.addVisit(t).subscribe({
       next: data => {
         this.overlay = false;
@@ -314,6 +324,15 @@ export class CalendarviewComponent implements OnInit {
       }
     });
   }
+  else
+  {
+    Swal.fire({
+      icon: 'error',
+      title: 'Wystąpił błąd!',
+      text: 'Pole data i notatka nie może być puste',
+    });
+  }
+}
 
 
   // !
