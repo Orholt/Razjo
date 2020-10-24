@@ -43,6 +43,7 @@ export class NotesService {
     localStorage.removeItem('usrName');
     localStorage.removeItem('familyId');
     localStorage.removeItem('role');
+    localStorage.removeItem('selectedFamily');
   }
 
   updateNote(x: INoteUpdate)

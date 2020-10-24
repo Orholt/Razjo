@@ -20,6 +20,10 @@
 {
    white-space: pre-line !important;
 }
+.title
+{
+  font-size: 1vw !important;
+}
 .row h2
 {
   font-size: large;

@@ -35,6 +35,14 @@ export class NotesComponent implements OnInit {
           this.areThereAnyNotes = false;
         }
         this.notesService.areThereAnyNotes = this.areThereAnyNotes;
+        if (this.areThereAnyNotes)
+        {
+          localStorage.setItem('anyNotes', 'true');
+        }
+        else
+        {
+          localStorage.setItem('anyNotes', 'false');
+        }
       },
       error: err => {
         Swal.fire({

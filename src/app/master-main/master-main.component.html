@@ -47,12 +47,14 @@
         </div>
       </div>
       <div class="col">
-        <h1 class="typo animate__animated animate__fadeIn">Kalendarz i Notatki</h1>
         <div class="notes">
           <div class="content">
-            <app-calendar></app-calendar> <!--Kalendarz-->
+            <div *ngIf="!isPSY" >
+              <h2>Kalendarz:</h2>
+              <app-calendar></app-calendar> <!--Kalendarz-->
+            </div>
             <!---app-calendarview></!---app-calendarview-->
-            <h2 *ngIf="!areThereAnyNotes">Ostatnie notatki:</h2>
+            <h2 *ngIf="areThereAnyNotes">Ostatnie notatki:</h2>
             <app-notes></app-notes> <!--Notatki-->
             <h2>Twoi podopieczni:</h2>
             <app-family-listing></app-family-listing>

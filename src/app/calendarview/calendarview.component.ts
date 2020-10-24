@@ -52,6 +52,7 @@ export class CalendarviewComponent implements OnInit {
   dataVisit: HTMLInputElement;
   noteText: HTMLInputElement;
   visitText: HTMLInputElement;
+  microMode: boolean;
 //#endregion
 
   addEvent(date: any): void {

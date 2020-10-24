@@ -16,6 +16,7 @@ export class MasterMainComponent implements OnInit {
   $request: IUserObj;
   areThereAnyNotes;
   usrName = localStorage.getItem('usrName');
+  isPSY = true;
   constructor(private loginService: LoginService, private noteService: NotesService, private Calendarservice: CalendarserviceService) { }
 
   ngOnInit(): void {
@@ -25,7 +26,15 @@ export class MasterMainComponent implements OnInit {
       this.usrName = 'Anon';
     }
     this.Calendarservice.headerToToken();
-    this.areThereAnyNotes = this.noteService.areThereAnyNotes;
+    // this.areThereAnyNotes = this.noteService.areThereAnyNotes;
+    if (localStorage.getItem('anyNotes') === 'true')
+    {
+      this.areThereAnyNotes = true;
+    }
+    else
+    {
+      this.areThereAnyNotes = false;
+    }
   }
 
   logOut()
