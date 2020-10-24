@@ -45,8 +45,6 @@ export class FamilyComponent implements OnInit {
 
   getFamilies()
   {
-    console.log(this.isPSY);
-    console.log(this.hasFamily);
     if (this.isPSY === true && this.hasFamily === true)
     {
       this.familises = JSON.parse(localStorage.getItem('x'));
