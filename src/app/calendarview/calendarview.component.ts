@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { GetLastVisits } from './models/GetLastVisits';
 import { IGetVisitsforMonth } from './models/IGetVisitsForMonth';
 import { GetNotesforMonth } from './models/CalGetNotesForMonth';
@@ -20,7 +21,7 @@ import Swal from 'sweetalert2';
 })
 export class CalendarviewComponent implements OnInit {
 
-  constructor(private notesService: NotesService, private calendarService: CalendarserviceService) { }
+  constructor(private notesService: NotesService, private calendarService: CalendarserviceService, private location: Location) { }
 
   locale = 'pl';
 
@@ -61,6 +62,10 @@ export class CalendarviewComponent implements OnInit {
   {
     console.log(this.events);
   }
+  back()
+  {
+    this.location.back();
+  }
   logOut()
   {
     this.notesService.logOut();
@@ -85,83 +90,6 @@ export class CalendarviewComponent implements OnInit {
         this.overlay = false;
         // TODO: Przerabianie notatek;
         this.events = [];
-        data.forEach(element => {
-          $tab = {
-            title: 'Notatka',
-            color: colors.yellow,
-            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
-            allDay: true
-          };
-          this.events.push($tab);
-        });
-        this.calendarService.events = this.events;
-        this.events = this.calendarService.events;
-        this.overlay = false;
-      },
-      error: err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Wystąpił błąd!',
-          text: 'Wystąpił błąd pobierania danych',
-          footer: err.error.errors
-        });
-      }
-    });
-  }
-
- /* getVisitsForThisMonth()
-  {
-    let x: IGetVisitsforMonth =
-    {
-      familyId: this.calendarService.familyId,
-      month: (new Date().getMonth() + 1).toString()
-    };
-
-    let $res: GetLastVisits[];
-    let $tab: CalendarEvent;
-    this.calendarService.getNotesForMonth(x).subscribe({
-      next: data => {
-        $res = data;
-        this.overlay = false;
-        // TODO: Przerabianie notatek;
-        data.forEach(element => {
-          $tab = {
-            title: 'Notatka',
-            color: colors.yellow,
-            start: new Date(parseInt(element.date.year, 10), parseInt(element.date.month, 10) - 1, parseInt(element.date.day, 10)),
-            allDay: true
-          };
-          this.events.push($tab);
-        });
-        this.calendarService.events = this.events;
-        this.events = this.calendarService.events;
-        this.overlay = false;
-      },
-      error: err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Wystąpił błąd!',
-          text: 'Wystąpił błąd pobierania danych',
-          footer: err.error.errors
-        });
-      }
-    });
-  } */
-
-  getNotesForMonth(y: number)
-  {
-    let x: IGetNotesforMonth =
-    {
-      familyId: this.calendarService.familyId,
-      month: (y).toString()
-    };
-
-    let $res: GetNotesforMonth[];
-    let $tab: CalendarEvent;
-    this.calendarService.getNotesForMonth(x).subscribe({
-      next: data => {
-        $res = data;
-        this.overlay = false;
         data.forEach(element => {
           $tab = {
             title: 'Notatka',

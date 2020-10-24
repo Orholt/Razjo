@@ -64,27 +64,32 @@ export class CalendarserviceService {
 
     addNote(note: IAddNote)
     {
+      this.headerToToken();
       return this.http.post<AddNote>(this.apiUrl + '/Calendar/addNote', note, { headers: this.reqHeader });
     }
     getLastNotes(familyId: ICalGetLastNotes)
     {
-      return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastNotes', familyId, { headers: this.reqHeader });
+      this.headerToToken();
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastNotes', { headers: this.reqHeader });
     }
     getNotesForMonth(x: IGetNotesforMonth)
     {
       this.headerToToken();
-      return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getNotesForMonth', x, { headers: this.reqHeader });
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getNotesForMonth', { headers: this.reqHeader });
     }
     addVisit(x: IAddVisit)
     {
+      this.headerToToken();
       return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/addVisit', x, { headers: this.reqHeader });
     }
     getLastVisits(x: IGetLastVisits)
     {
-      return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastVisits', x, { headers: this.reqHeader });
+      this.headerToToken();
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getLastVisits', { headers: this.reqHeader });
     }
     getVisitsForMonth(x: IGetVisitsforMonth)
     {
-      return this.http.post<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getVisitsForMonth', x, { headers: this.reqHeader });
+      this.headerToToken();
+      return this.http.get<CalGetLastNotes[]>(this.apiUrl + '/Calendar/getVisitsForMonth', { headers: this.reqHeader });
     }
 }

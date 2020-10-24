@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { INoteUpdate } from './INoteUpdate';
 import { trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ import { error } from 'protractor';
 })
 export class AllnotesComponent implements OnInit {
 
-  constructor(private notes: NotesService, private noteservice: NotesService) { }
+  constructor(private notes: NotesService, private noteservice: NotesService, private location: Location) { }
 
   $response: INote[];
   overlay;
@@ -22,6 +23,11 @@ export class AllnotesComponent implements OnInit {
   ngOnInit(): void {
     this.overlay = false;
     this.fetchNotes();
+  }
+
+  back()
+  {
+    this.location.back();
   }
 
   logOut()

@@ -8,6 +8,7 @@ import { NotesService } from './../addnote/notes.service';
 import { Component, OnInit } from '@angular/core';
 import { IFamilyCreate } from './models/IFamilyCreate';
 import Swal from 'sweetalert2';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-family',
@@ -27,7 +28,8 @@ export class FamilyComponent implements OnInit {
   $res: FamilyCreate;
   familises: FamilyCreate[];
 
-  constructor(private notesService: NotesService, private familyService: FamilyService, private loginService: LoginService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private location: Location, private notesService: NotesService, private familyService: FamilyService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.checkOut();
@@ -214,6 +216,11 @@ export class FamilyComponent implements OnInit {
   }
   //#endregion metody
 
+ back()
+  {
+    this.location.back();
+  }
+
   logOut()
   {
     this.notesService.logOut();
@@ -222,11 +229,13 @@ export class FamilyComponent implements OnInit {
   afterFamilyCreate(x: FamilyCreate)
   {
     this.familises.push(x);
+    localStorage.setItem('x', JSON.stringify(this.familises));
   }
 
   afterFamilyRemove(x: number)
   {
     this.familises.splice(x , 1);
+    localStorage.setItem('x', JSON.stringify(this.familises));
   }
 
 }

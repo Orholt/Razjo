@@ -5,7 +5,7 @@
     <div class="sticky-top navbar navbar-dark bg-custom shadow-sm">
         <div class="justify-content-between">
           <div class="navbar-brand d-flex align-items-center">
-            <img [routerLink]="['../userMain']" draggable="false" src="../../assets/auth/back.png" height="40" class="mr-2" focusable="false">
+            <img (click)="back()" draggable="false" src="../../assets/auth/back.png" height="40" class="mr-2" focusable="false">
             <h1 class="t1 text-dark display-3">Rodzina</h1>
             <button (click)="logOut()" class="btnw btn btn-outline-danger">Wyloguj</button>
           </div>

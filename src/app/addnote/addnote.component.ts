@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { IAddNote } from './AddNote';
@@ -11,7 +12,7 @@ import { NotesService } from './notes.service';
 })
 export class AddnoteComponent implements OnInit {
 
-  constructor(private noteService: NotesService) { }
+  constructor(private noteService: NotesService, private location: Location) { }
   textAreaContent;
   noteContent: IAddNote;
   $response: INote;
@@ -21,6 +22,11 @@ export class AddnoteComponent implements OnInit {
     this.textAreaContent = document.getElementById('textBox');
     this.textAreaContent.value = '';
     this.overlay = false;
+  }
+
+  back()
+  {
+    this.location.back();
   }
 
   logOut()
