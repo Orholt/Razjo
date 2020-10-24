@@ -19,13 +19,13 @@
                   <div class="row">
                       <div *ngFor="let item of $response" class="col-4">
                           <div class="jumbotron animate__animated animate__fadeIn">
-                              <h1 class="display-3">Notatka</h1>
-                              <div class="jumbotron ml-2 mr-2 jbwhite">
+                              <h1 class="display-4 mt-2 pt-0">Notatka</h1>
+                              <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
                                 <h2 class="noteText pl-3 pr-3">{{item.message}}</h2>
                               </div>
                               <h3>Godzina: {{item.creationDate.hour}}:{{item.creationDate.minute}}</h3>
                               <h3 class="">Data: {{item.creationDate.day}}-{{item.creationDate.month}}-{{item.creationDate.year}}</h3>
-                              <a (click)="noteEdit(item.id, item.message)" class="btn btn-warning"><b>Edytuj notatkę</b></a>
+                              <a (click)="noteEdit(item.id, item.message)" class="mt-1 editbtn btn btn-warning"><b>Edytuj notatkę</b></a>
                           </div>
                       </div>
                   </div>
