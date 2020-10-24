@@ -43,6 +43,11 @@ export class CalendarviewComponent implements OnInit {
   families: Family[] = [];
   isPSY = false;
   selector: HTMLSelectElement;
+  selectorVisit: HTMLSelectElement;
+  selectorNote: HTMLSelectElement;
+  dataNote: HTMLInputElement;
+  dataVisit: HTMLInputElement;
+  noteText: HTMLInputElement;
 //#endregion
 
   addEvent(date: any): void {
@@ -62,7 +67,12 @@ export class CalendarviewComponent implements OnInit {
 
   fetchElements()
   {
-    this.selector = document.getElementById('sel') as HTMLSelectElement;
+    this.selector = document.getElementById('sel') as HTMLSelectElement; // selektor rodziny kalendarza
+    this.selectorVisit = document.getElementById('selVisit') as HTMLSelectElement; // selektor wizyty
+    this.selectorNote = document.getElementById('selNote') as HTMLSelectElement; // selektor notatki
+    this.dataNote = document.getElementById('InputData0') as HTMLInputElement;
+    this.dataVisit = document.getElementById('InputData1') as HTMLInputElement;
+    this.noteText = document.getElementById('textBox') as HTMLInputElement;
   }
 
   fetchForNotes()

@@ -67,7 +67,14 @@
                       <div class="jumbotron animate__animated animate__fadeIn">
                           <h2 class="mt-2 pt-0">Dodawanie notatki</h2>
                           <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
-
+                            <label for="textBox"><b>Treść notatki:</b></label>
+                            <textarea id="textBox" style="resize: none;" class="form-control mb-2"  draggable="false" rows="3" placeholder="Wprowadź treść swojej notatki"></textarea>
+                            <label for="InputData0"><b>Data:</b></label>
+                            <input type="date" class="form-control mb-2" id="InputData0">
+                            <label for="selNote"><b>Rodzina:</b></label>
+                            <select id="selNote" class="form-control mb-2">
+                              <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
+                            </select>
                           </div>
                           <a class="mt-1 editbtn btn btn-warning"><b>Dodaj notatkę</b></a>
                       </div>
@@ -78,10 +85,14 @@
                         <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
                           <div class="form-group">
                             <label for="InputData1"><b>Data:</b></label>
-                            <input type="date" class="form-control" id="InputData1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="date" class="form-control mb-2" id="InputData1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="selVisit"><b>Rodzina:</b></label>
+                            <select id="selVisit" class="form-control mb-2">
+                              <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
+                            </select>
                           </div>
                         </div>
-                        <a class="mt-1 editbtn btn btn-warning"><b>Dodaj wizytę</b></a>
+                        <a class="mt-1 editbtnred btn btn-warning"><b>Dodaj wizytę</b></a>
                     </div>
                 </div>
               </div>

@@ -114,6 +114,14 @@ img:hover
      transform: scale(1.1);
  }
 
+ .editbtnred
+ {
+   background-color: rgb(231, 46, 83);
+ }
+ .editbtnred:hover
+ {
+   background: rgb(173, 34, 62);
+ }
 .crim
 {
     background-color:#ce2a4b !important;
