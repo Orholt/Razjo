@@ -1,3 +1,4 @@
+import { Family } from './../auth/UserObjG';
 import { LoginService } from './../auth/login.service';
 import { IFamilySendMailWithCode } from './models/IFamilySendMailWithCode';
 import { IFamilyJoin } from './models/IFamilyJoin';
@@ -24,12 +25,14 @@ export class FamilyComponent implements OnInit {
   hasFamily;
   familyId;
   $res: FamilyCreate;
+  familises: Family[];
 
   constructor(private notesService: NotesService, private familyService: FamilyService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.checkOut();
     this.familyId = localStorage.getItem('familyId');
+    this.getFamilies();
   }
 
   getElements()
@@ -38,6 +41,20 @@ export class FamilyComponent implements OnInit {
     this.generatedCode = document.getElementById('generatedCode');
     this.invitationCode = document.getElementById('invitationCode');
     this.emailToSend = document.getElementById('emailToSend');
+  }
+
+  getFamilies()
+  {
+    console.log(this.isPSY);
+    console.log(this.hasFamily);
+    if (this.isPSY === true && this.hasFamily === true)
+    {
+      this.familises = JSON.parse(localStorage.getItem('x'));
+    }
+    else
+    {
+      this.familises = [];
+    }
   }
 
   checkOut()
@@ -52,6 +69,10 @@ export class FamilyComponent implements OnInit {
     }
     // familyCheck
     if (localStorage.getItem('familyId') !== 'none' && !localStorage.getItem('familyId').startsWith('array'))
+    {
+      this.hasFamily = true;
+    }
+    else if (localStorage.getItem('familyId') !== 'none' && localStorage.getItem('familyId').startsWith('array'))
     {
       this.hasFamily = true;
     }
@@ -122,8 +143,9 @@ export class FamilyComponent implements OnInit {
   {
     this.overlay = true;
     this.getElements();
+    let sel = document.getElementById('sel') as HTMLSelectElement;
     let x: IFamilySendMailWithCode = {
-      familyId: localStorage.getItem('familyId'),
+      familyId: this.familises[sel.selectedIndex].familyId,
       email: this.emailToSend.value
     };
     this.familyService.sendMailWithCodeFamily(x).subscribe({

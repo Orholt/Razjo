@@ -41,12 +41,15 @@
                 <h2 class="ft">Wyślij zaproszenie</h2>
                 <p class="lead mt-2 mb-4">Podaj adres na który ma być wysłane zaproszenie</p>
                 <div class="form-group pr-5 pl-5">
+                  <select id="sel" class="form-control mb-2">
+                    <option *ngFor="let family of familises; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
+                  </select>
                   <input id="emailToSend" type="email" class="form-control eminput" placeholder="Adres email">
                 </div>
                 <a (click)="sendMailWithCodeFamily()" class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Wyślij zaproszenie</a>
               </div>
             </div>
-            <div *ngIf="hasFamily" >
+            <div *ngIf="hasFamily&&!isPSY" >
               <h1 class="display-1 mb-4">Należysz już do rodziny</h1>
               <h2>ID twojej rodziny: <b>{{familyId}}</b></h2>
             </div>

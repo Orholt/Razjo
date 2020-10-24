@@ -84,6 +84,7 @@ export class CalendarviewComponent implements OnInit {
         $res = data;
         this.overlay = false;
         // TODO: Przerabianie notatek;
+        this.events = [];
         data.forEach(element => {
           $tab = {
             title: 'Notatka',
