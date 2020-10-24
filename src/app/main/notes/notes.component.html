@@ -2,7 +2,7 @@
 
 
 <div class="row">
-  <div *ngFor="let note of $res.slice(0,3)" class="col-4">
+  <div *ngFor="let note of $res.slice(($res.length - 3),$res.length); let i = index" class="col-4">
       <div class="jumbotron animate__animated animate__fadeIn">
           <h1 class="display-5">Notatka</h1>
           <div class="jumbotron ml-2 mr-2 jbwhite">

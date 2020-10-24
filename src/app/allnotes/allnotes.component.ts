@@ -17,6 +17,7 @@ export class AllnotesComponent implements OnInit {
 
   $response: INote[];
   overlay;
+  inputTemp: string;
 
   ngOnInit(): void {
     this.overlay = false;
@@ -48,9 +49,10 @@ export class AllnotesComponent implements OnInit {
     });
   }
 
-  noteEdit(itemId: string)
+  noteEdit(itemId: string, message: string)
   {
     let text: string;
+    this.inputTemp = message;
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -65,6 +67,7 @@ export class AllnotesComponent implements OnInit {
       title: 'Edycja notatki',
       text: 'Podaj treść notatki',
       input: 'textarea',
+      inputValue: this.inputTemp,
       showCancelButton: true,
       showConfirmButton: true,
       confirmButtonText: 'Zapisz zmiany',
