@@ -98,25 +98,35 @@ export class CalendarviewComponent implements OnInit {
     }
     else if (this.families.length > 1)
     {
-      this.hasAnyFamily = true;
-      this.hasManyFamilies = true;
-      this.fetchElements();
-      this.getNotesForThisMonth(this.families[0].familyId);
-      this.getVisitsForThisMonth(this.families[0].familyId);
-      this.refresh.next();
+      if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
+      {
+        this.fetchForSelectedNotes();
+      }
+      else
+      {
+        this.hasAnyFamily = true;
+        this.hasManyFamilies = true;
+        this.fetchElements();
+        this.getNotesForThisMonth(this.families[0].familyId);
+        this.getVisitsForThisMonth(this.families[0].familyId);
+        this.refresh.next();
+      }
     }
   }
   fetchForSelectedNotes()
   {
     this.fetchElements();
     this.events = [];
-    this.getNotesForThisMonth(this.families[parseInt(localStorage.getItem('selectedFamily'), 10)].familyId);
-    this.getVisitsForThisMonth(this.families[parseInt(localStorage.getItem('selectedFamily'), 10)].familyId);
+    this.getNotesForThisMonth(localStorage.getItem('selectedFamily'));
+    this.getVisitsForThisMonth(localStorage.getItem('selectedFamily'));
     this.refresh.next();
   }
   addSelectedFamilyToLocal()
   {
+    this.fetchElements();
     localStorage.setItem('selectedFamily', this.families[this.selector.selectedIndex].familyId);
+    localStorage.setItem('backUpId', this.selector.selectedIndex.toString());
+    this.fetchForSelectedNotes();
   }
 
   testEventSystem()
@@ -231,7 +241,7 @@ export class CalendarviewComponent implements OnInit {
           text: 'Pomyślnie utworzono notatkę'
         });
         this.noteText.value = '';
-        if ( parseInt(localStorage.getItem('selectedFamily'), 10) > 0)
+        if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
         {
           this.fetchForSelectedNotes();
         }
@@ -282,7 +292,7 @@ export class CalendarviewComponent implements OnInit {
         });
         this.visitText.value = '';
         this.dataVisit.value = '';
-        if ( parseInt(localStorage.getItem('selectedFamily'), 10) > 0)
+        if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
         {
           this.fetchForSelectedNotes();
         }
