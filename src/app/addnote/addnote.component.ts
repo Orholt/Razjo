@@ -43,7 +43,7 @@ export class AddnoteComponent implements OnInit {
         this.overlay = false;
         Swal.fire({
           icon: 'success',
-          title: 'Pomyślnie utworzono notatkę ✔'
+          title: 'Pomyślnie utworzono notatkę'
         });
         this.afterPost();
       },

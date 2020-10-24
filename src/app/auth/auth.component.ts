@@ -78,7 +78,6 @@ export class AuthComponent implements OnInit {
         this.$response.families.forEach(familyI => {
           t += '$' + familyI.familyId; // !important
         });
-        console.log(t);
         localStorage.setItem('familyId', t);
       }
     }
