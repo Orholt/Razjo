@@ -1,3 +1,6 @@
+import { IAddVisit } from './models/IAddVisit';
+import { AddVisit } from './models/AddVisit';
+import { IAddNote } from './models/IAddNote';
 import { Family } from './../auth/UserObjG';
 import { Location } from '@angular/common';
 import { GetLastVisits } from './models/GetLastVisits';
@@ -45,9 +48,9 @@ export class CalendarviewComponent implements OnInit {
   selector: HTMLSelectElement;
   selectorVisit: HTMLSelectElement;
   selectorNote: HTMLSelectElement;
-  dataNote: HTMLInputElement;
   dataVisit: HTMLInputElement;
   noteText: HTMLInputElement;
+  visitText: HTMLInputElement;
 //#endregion
 
   addEvent(date: any): void {
@@ -70,14 +73,15 @@ export class CalendarviewComponent implements OnInit {
     this.selector = document.getElementById('sel') as HTMLSelectElement; // selektor rodziny kalendarza
     this.selectorVisit = document.getElementById('selVisit') as HTMLSelectElement; // selektor wizyty
     this.selectorNote = document.getElementById('selNote') as HTMLSelectElement; // selektor notatki
-    this.dataNote = document.getElementById('InputData0') as HTMLInputElement;
     this.dataVisit = document.getElementById('InputData1') as HTMLInputElement;
     this.noteText = document.getElementById('textBox') as HTMLInputElement;
+    this.visitText = document.getElementById('visitMessage') as HTMLInputElement;
   }
 
   // pobiera notatki i wizyty
   fetchForNotes()
   {
+    this.events = [];
     // ! spr ilości rodzin
     if (this.families.length === 0)
     {
@@ -102,6 +106,18 @@ export class CalendarviewComponent implements OnInit {
       this.refresh.next();
     }
   }
+  fetchForSelectedNotes()
+  {
+    this.fetchElements();
+    this.events = [];
+    this.getNotesForThisMonth(this.families[parseInt(localStorage.getItem('selectedFamily'), 10)].familyId);
+    this.getVisitsForThisMonth(this.families[parseInt(localStorage.getItem('selectedFamily'), 10)].familyId);
+    this.refresh.next();
+  }
+  addSelectedFamilyToLocal()
+  {
+    localStorage.setItem('selectedFamily', this.families[this.selector.selectedIndex].familyId);
+  }
 
   testEventSystem()
   {
@@ -118,6 +134,14 @@ export class CalendarviewComponent implements OnInit {
   logOut()
   {
     this.notesService.logOut();
+  }
+
+  testDate()
+  {
+    this.fetchElements();
+    // tslint:disable-next-line: prefer-const
+    let t = new Date(this.dataVisit.value);
+    console.log(t.getFullYear());
   }
 
 //#region calendarservice
@@ -145,7 +169,7 @@ export class CalendarviewComponent implements OnInit {
         this.calendarService.events = this.events;
         this.events = this.calendarService.events;
         this.overlay = false;
-        console.log(this.events);
+        // console.log(this.events);
       },
       error: err => {
         Swal.fire({
@@ -186,6 +210,97 @@ export class CalendarviewComponent implements OnInit {
           text: 'Wystąpił błąd pobierania danych',
           footer: err.error.errors
         });
+      }
+    });
+  }
+
+  addNote()
+  {
+    this.fetchElements();
+    let t: IAddNote = {
+      familyId: this.families[this.selectorNote.selectedIndex].familyId,
+      message: this.noteText.value
+    };
+    this.overlay = true;
+    this.calendarService.addNote(t).subscribe({
+      next: data => {
+        this.overlay = false;
+        Swal.fire({
+          icon: 'success',
+          title: 'Utworzono notatkę!',
+          text: 'Pomyślnie utworzono notatkę'
+        });
+        this.noteText.value = '';
+        if ( parseInt(localStorage.getItem('selectedFamily'), 10) > 0)
+        {
+          this.fetchForSelectedNotes();
+        }
+        else
+        {
+          this.fetchForNotes();
+        }
+      },
+      error: err => {
+        this.overlay = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd podczas wysyłania zaproszenia',
+          footer: err.error.errors
+        });
+        this.noteText.value = '';
+      }
+    });
+  }
+
+  addVisit()
+  {
+    this.fetchElements();
+    this.overlay = true;
+    let q = new Date(this.dataVisit.value);
+    let t: IAddVisit = {
+      familyId: this.families[this.selectorVisit.selectedIndex].familyId,
+      message: this.visitText.value,
+      date: {
+        day: q.getDate().toString(),
+        hour: q.getHours().toString(),
+        minute: q.getMinutes().toString(),
+        month: (q.getMonth() + 1).toString(),
+        year: q.getFullYear().toString()
+      }
+    };
+
+    console.log(t);
+
+    this.calendarService.addVisit(t).subscribe({
+      next: data => {
+        this.overlay = false;
+        Swal.fire({
+          icon: 'success',
+          title: 'Utworzono Wizytę!',
+          text: 'Pomyślnie utworzono wizytę'
+        });
+        this.visitText.value = '';
+        this.dataVisit.value = '';
+        if ( parseInt(localStorage.getItem('selectedFamily'), 10) > 0)
+        {
+          this.fetchForSelectedNotes();
+        }
+        else
+        {
+          this.fetchForNotes();
+        }
+      },
+      error: err => {
+        this.overlay = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd podczas wysyłania zaproszenia',
+          footer: err.error.errors
+        });
+        this.visitText.value = '';
+        this.dataVisit.value = '';
       }
     });
   }

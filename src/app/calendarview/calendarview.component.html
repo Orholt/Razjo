@@ -18,7 +18,7 @@
             <h2 class="ft">Wybór rodziny</h2>
             <p class="lead mt-2 mb-4">Wybierz rodzinę dla której chcesz przeglądać kalendarz</p>
             <div class="form-group pr-5 pl-5">
-              <select id="sel" class="form-control mb-2">
+              <select (click)="addSelectedFamilyToLocal()" id="sel" class="form-control mb-2">
                 <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
               </select>
             </div>
@@ -69,14 +69,12 @@
                           <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
                             <label for="textBox"><b>Treść notatki:</b></label>
                             <textarea id="textBox" style="resize: none;" class="form-control mb-2"  draggable="false" rows="3" placeholder="Wprowadź treść swojej notatki"></textarea>
-                            <label for="InputData0"><b>Data:</b></label>
-                            <input type="date" class="form-control mb-2" id="InputData0">
                             <label for="selNote"><b>Rodzina:</b></label>
                             <select id="selNote" class="form-control mb-2">
                               <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
                             </select>
                           </div>
-                          <a class="mt-1 editbtn btn btn-warning"><b>Dodaj notatkę</b></a>
+                          <a (click)="addNote()" class="mt-1 editbtn btn btn-warning"><b>Dodaj notatkę</b></a>
                       </div>
                   </div>
                   <div class="col">
@@ -85,14 +83,16 @@
                         <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
                           <div class="form-group">
                             <label for="InputData1"><b>Data:</b></label>
-                            <input type="date" class="form-control mb-2" id="InputData1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="datetime-local" class="form-control mb-2" id="InputData1">
+                            <label for="visitMessage"><b>Wiadomość:</b></label>
+                            <input type="text" class="form-control mb-2" id="visitMessage" placeholder="Wprowadź wiadomość do wizyty">
                             <label for="selVisit"><b>Rodzina:</b></label>
                             <select id="selVisit" class="form-control mb-2">
                               <option *ngFor="let family of families; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
                             </select>
                           </div>
                         </div>
-                        <a class="mt-1 editbtnred btn btn-warning"><b>Dodaj wizytę</b></a>
+                        <a (click)="addVisit()" class="mt-1 editbtnred btn btn-warning"><b>Dodaj wizytę</b></a>
                     </div>
                 </div>
               </div>
