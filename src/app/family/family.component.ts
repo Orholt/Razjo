@@ -150,6 +150,7 @@ export class FamilyComponent implements OnInit {
       }
     });
   }
+
   sendMailWithCodeFamily()
   {
     this.overlay = true;
@@ -181,6 +182,36 @@ export class FamilyComponent implements OnInit {
       }
     });
   }
+
+  removeFamily()
+  {
+    this.overlay = true;
+    this.getElements();
+    let sel = document.getElementById('seldel') as HTMLSelectElement;
+    let t = this.familises[sel.selectedIndex].familyName;
+    let q = sel.selectedIndex;
+    this.familyService.removeFamily(this.familises[sel.selectedIndex].familyId).subscribe({
+      next: data => {
+        this.overlay = false;
+        Swal.fire({
+          icon: 'success',
+          title: 'Zakończono pomyślnie!',
+          text: 'Pomyślnie usunięto rodzinę!',
+          footer: '<b>Nazwa rodziny: </b>' + t
+        });
+        this.afterFamilyRemove(q);
+      },
+      error: err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wystąpił błąd!',
+          text: 'Wystąpił błąd podczas usuwania rodziny',
+          footer: err.error.errors
+        });
+        this.overlay = false;
+      }
+    });
+  }
   //#endregion metody
 
   logOut()
@@ -191,6 +222,11 @@ export class FamilyComponent implements OnInit {
   afterFamilyCreate(x: FamilyCreate)
   {
     this.familises.push(x);
+  }
+
+  afterFamilyRemove(x: number)
+  {
+    this.familises.splice(x , 1);
   }
 
 }

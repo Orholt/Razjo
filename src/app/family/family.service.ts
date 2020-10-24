@@ -36,4 +36,10 @@ export class FamilyService {
     this.calendarService.headerToToken();
     return this.http.post(this.apiUrl + '/Family/create', x, { headers: this.calendarService.reqHeader });
   }
+
+  removeFamily(x: string)
+  {
+    this.calendarService.headerToToken();
+    return this.http.delete(this.apiUrl + '/Family/delete/' + x, { headers: this.calendarService.reqHeader });
+  }
 }

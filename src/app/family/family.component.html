@@ -49,6 +49,18 @@
                 <a (click)="sendMailWithCodeFamily()" class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Wyślij zaproszenie</a>
               </div>
             </div>
+            <div *ngIf="isPSY"  class="container animate__animated animate__fadeIn">
+              <div id="j1" class="jumbotron j1 jcreate mt-4 mb-3">
+                <h2 class="ft">Usuń rodzinę</h2>
+                <p class="lead mt-2 mb-4">Wybierz rodzinę którą chcesz usunąć</p>
+                <div class="form-group pr-5 pl-5">
+                  <select id="seldel" class="form-control mb-2">
+                    <option *ngFor="let family of familises; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
+                  </select>
+                </div>
+                <a (click)="removeFamily()" class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Usuń rodzinę</a>
+              </div>
+            </div>
             <div *ngIf="hasFamily&&!isPSY" >
               <h1 class="display-1 mb-4">Należysz już do rodziny</h1>
               <h2>ID twojej rodziny: <b>{{familyId}}</b></h2>
