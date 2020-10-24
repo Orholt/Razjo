@@ -307,7 +307,7 @@ export class CalendarviewComponent implements OnInit {
   addVisit()
   {
     this.fetchElements();
-    if (this.dataVisit.value !== '' && this.noteText.value !== '')
+    if (this.dataVisit.value !== '' || this.noteText.value !== '')
     {
     this.overlay = true;
     let q = new Date(this.dataVisit.value);
@@ -322,6 +322,8 @@ export class CalendarviewComponent implements OnInit {
         year: q.getFullYear().toString()
       }
     };
+    console.log(this.selectorVisit.selectedIndex);
+    console.log(t);
     this.calendarService.addVisit(t).subscribe({
       next: data => {
         this.overlay = false;
