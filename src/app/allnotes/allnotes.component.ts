@@ -25,6 +25,11 @@ export class AllnotesComponent implements OnInit {
     this.fetchNotes();
   }
 
+  refresh()
+  {
+    this.ngOnInit();
+  }
+
   back()
   {
     this.location.back();

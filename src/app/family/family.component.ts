@@ -24,6 +24,7 @@ export class FamilyComponent implements OnInit {
   emailToSend;
   isPSY = true;
   hasFamily;
+  hasAnyFamilies: boolean;
   familyId;
   $res: FamilyCreate;
   familises: FamilyCreate[];
@@ -35,6 +36,19 @@ export class FamilyComponent implements OnInit {
     this.checkOut();
     this.familyId = localStorage.getItem('familyId');
     this.getFamilies();
+    if (this.familises.length === 0)
+    {
+      this.hasAnyFamilies = false;
+    }
+    else
+    {
+      this.hasAnyFamilies = true;
+    }
+  }
+
+  refresh()
+  {
+    this.ngOnInit();
   }
 
   getElements()
@@ -231,12 +245,30 @@ export class FamilyComponent implements OnInit {
   {
     this.familises.push(x);
     localStorage.setItem('x', JSON.stringify(this.familises));
+    this.getFamilies();
+    if (this.familises.length === 0)
+    {
+      this.hasAnyFamilies = false;
+    }
+    else
+    {
+      this.hasAnyFamilies = true;
+    }
   }
 
   afterFamilyRemove(x: number)
   {
     this.familises.splice(x , 1);
     localStorage.setItem('x', JSON.stringify(this.familises));
+    this.getFamilies();
+    if (this.familises.length === 0)
+    {
+      this.hasAnyFamilies = false;
+    }
+    else
+    {
+      this.hasAnyFamilies = true;
+    }
   }
 
 }

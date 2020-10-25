@@ -7,6 +7,7 @@
           <div class="navbar-brand d-flex align-items-center">
             <img (click)="back()" draggable="false" src="../../assets/auth/back.png" height="40" class="mr-2" focusable="false">
             <h1 class="t1 text-dark display-3">Rodzina</h1>
+            <button (click)="refresh()" class="btnw btn btn-outline-info" style="position: absolute;right: 6vw;">Odświerz</button>
             <button (click)="logOut()" class="btnw btn btn-outline-danger">Wyloguj</button>
           </div>
         </div>
@@ -58,7 +59,7 @@
                     <option *ngFor="let family of familises; let i = index" value={{i}} ><b>{{family.familyName}}</b></option>
                   </select>
                 </div>
-                <a (click)="removeFamily()" class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Usuń rodzinę</a>
+                <a *ngIf="hasAnyFamilies"  (click)="removeFamily()" class=" mt-1 btn btn-lg crim pl-5 pr-5 pt-2 pb-2" role="button">Usuń rodzinę</a>
               </div>
             </div>
             <div *ngIf="hasFamily&&!isPSY" >

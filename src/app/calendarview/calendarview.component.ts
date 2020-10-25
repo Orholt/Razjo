@@ -78,6 +78,11 @@ export class CalendarviewComponent implements OnInit {
     this.fetchForNotes();
   }
 
+  fresh()
+  {
+    this.ngOnInit();
+  }
+
   fetchElements()
   {
     this.selector = document.getElementById('sel') as HTMLSelectElement; // selektor rodziny kalendarza
@@ -285,7 +290,14 @@ export class CalendarviewComponent implements OnInit {
         this.noteText.value = '';
         if (this.isPSY)
         {
-          if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
+          if (localStorage.getItem('selectedFamily') === null)
+          {
+            this.fetchElements();
+            this.getNotesForThisMonth(this.families[0].familyId);
+            this.getVisitsForThisMonth(this.families[0].familyId);
+            this.refresh.next();
+          }
+          else if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
           {
             this.fetchForSelectedNotes();
           }
@@ -340,8 +352,6 @@ export class CalendarviewComponent implements OnInit {
         year: q.getFullYear().toString()
       }
     };
-    console.log(this.selectorVisit.selectedIndex);
-    console.log(t);
     this.calendarService.addVisit(t).subscribe({
       next: data => {
         this.overlay = false;
