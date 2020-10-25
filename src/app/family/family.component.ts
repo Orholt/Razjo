@@ -27,7 +27,7 @@ export class FamilyComponent implements OnInit {
   hasAnyFamilies: boolean;
   familyId;
   $res: FamilyCreate;
-  familises: FamilyCreate[];
+  familises: FamilyCreate[] = [];
   safetyChecked = false;
 
   // tslint:disable-next-line: max-line-length
@@ -37,6 +37,7 @@ export class FamilyComponent implements OnInit {
     this.checkOut();
     this.familyId = localStorage.getItem('familyId');
     this.getFamilies();
+    this.familises = JSON.parse(localStorage.getItem('x'));
     if (this.familises.length === 0)
     {
       this.hasAnyFamilies = false;
@@ -45,12 +46,11 @@ export class FamilyComponent implements OnInit {
     {
       this.hasAnyFamilies = true;
     }
-    this.getFamilies();
   }
 
   refresh()
   {
-    this.ngOnInit();
+    location.reload();
   }
 
   getElements()
@@ -126,6 +126,8 @@ export class FamilyComponent implements OnInit {
         this.generatedCode.value = data.invitationCode;
         this.overlay = false;
         this.afterFamilyCreate(data);
+        this.familises = JSON.parse(localStorage.getItem('x'));
+        this.ngOnInit();
       },
       error: err => {
         Swal.fire({
@@ -187,9 +189,10 @@ export class FamilyComponent implements OnInit {
           icon: 'success',
           title: 'Zakończono pomyślnie!',
           text: 'Pomyślnie wysłano kod z zaproszeniem!',
-          footer: '<br>Adres email: </br>' + this.emailToSend.value
+          footer: `Adres email: ${this.emailToSend.value}`
         });
         this.emailToSend.value = '';
+        location.reload();
       },
       error: err => {
         Swal.fire({
@@ -199,6 +202,7 @@ export class FamilyComponent implements OnInit {
           footer: err.error.errors
         });
         this.overlay = false;
+        location.reload();
       }
     });
   }
@@ -220,6 +224,7 @@ export class FamilyComponent implements OnInit {
           footer: `<b>Nazwa rodziny: </b> ${t}`
         });
         this.afterFamilyRemove(q);
+        location.reload();
       },
       error: err => {
         Swal.fire({
@@ -229,6 +234,7 @@ export class FamilyComponent implements OnInit {
           footer: err.error.errors
         });
         this.overlay = false;
+        location.reload();
       }
     });
   }
@@ -257,6 +263,7 @@ export class FamilyComponent implements OnInit {
     {
       this.hasAnyFamilies = true;
     }
+    this.familises = JSON.parse(localStorage.getItem('x'));
   }
 
   afterFamilyRemove(x: number)
