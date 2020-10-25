@@ -13,7 +13,7 @@
 - Kalendarz - rodzina posiada wspólny kalendarz, wyświetlają się w nim informacje o notatkach psychologa, jak i zwykłego użytkownika ale również informacje o zaplanowanych wizytach przez psychologa dla każdego typu użytkownika. Istnieją w aplikacji dwa typy notatek: te dodawane do kalendarza (wspólne dla psychologa i pacjenta) oraz prywatne (tylko widoczne dla użytkownika tworzącego).
 - Moja rodzina - dla zwykłego użytkownika znajduje się tam opcja dołączenia do „rodziny”, a po dołączeniu do niej, jest dostępne tam ID rodziny. Psycholog za to ma dostępnych więcej opcji. Może on utworzyć rodzinę, wysłać kod zaproszeniowy do rodziny przez maila lub usunąć rodzinę.
 
-###Działanie aplikacji mobilnej:
+### Działanie aplikacji mobilnej:
 Bardzo zbliżone do strony internetowej. 
 Po zalogowaniu zwykły użytkownik ma przed sobą kalendarz i zakładkę z prywatnymi notatkami. Kliknięcie na dany dzień wyświetli informacje o notatkach z możliwością dodania, na obecny dzień, oraz o wizytach.
 Po zalogowaniu na konto psychologa wyświetlają się pacjenci, a po kliknięciu na któregoś z nich wyświetla się kalendarz i wszystkie inne informacje.
