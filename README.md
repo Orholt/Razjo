@@ -42,5 +42,5 @@ Język : `TypeScript` oraz Framework `Angular CLI` w wersji **9.1.7**.
 
 ------------
 
-### Aplikacja mobilna 
+### 📲 Aplikacja mobilna 📲
 ### **[<< POBIERZ APLIKACJĘ >>](https://www.dropbox.com/s/23rw85sp8ryv8il/Razjo.apk?dl=1 "<< POBIERZ APLIKACJĘ >>")**
