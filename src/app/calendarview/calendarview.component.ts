@@ -75,7 +75,10 @@ export class CalendarviewComponent implements OnInit {
     }
     this.families = JSON.parse(localStorage.getItem('x'));
     // localStorage.setItem('backUpId', '0');
-    localStorage.setItem('selectedFamily', this.families[0].familyId);
+    if (this.families.length > 0)
+    {
+      localStorage.setItem('selectedFamily', this.families[0].familyId);
+    }
     this.fetchElements();
     this.fetchForNotes();
   }
