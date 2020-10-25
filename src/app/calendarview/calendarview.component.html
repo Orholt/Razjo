@@ -62,10 +62,10 @@
             >
             </mwl-calendar-day-view>
             <!-----Po kalendarzu, przyciski------>
-            <div *ngIf="isPSY" class=" ctn note animate__animated animate__fadeIn">
+            <div class=" ctn note animate__animated animate__fadeIn">
               <div class="row">
                   <div class="col">
-                      <div class="jumbotron animate__animated animate__fadeIn">
+                      <div *ngIf="hasAnyFamily" class="jumbotron animate__animated animate__fadeIn">
                           <h2 class="mt-2 pt-0">Dodawanie notatki</h2>
                           <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
                             <label for="textBox"><b>Treść notatki:</b></label>
@@ -79,7 +79,7 @@
                       </div>
                   </div>
                   <div class="col">
-                    <div class="jumbotron animate__animated animate__fadeIn">
+                    <div *ngIf="hasAnyFamily&&isPSY" class="jumbotron animate__animated animate__fadeIn">
                         <h2 class="mt-2 pt-0">Dodawanie wizyty</h2>
                         <div class="jumbotron mb-2 ml-2 mr-2 jbwhite">
                           <div class="form-group">

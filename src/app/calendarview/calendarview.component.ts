@@ -65,8 +65,16 @@ export class CalendarviewComponent implements OnInit {
     this.events = this.calendarService.events;
     this.calendarService.headerToToken();
     this.calendarService.familyHandler();
-    if (localStorage.getItem('role') === 'PSY') { this.isPSY = true; }
+    if (localStorage.getItem('role') === 'PSY')
+    {
+       this.isPSY = true;
+    }
+    else
+    {
+      this.isPSY = false;
+    }
     this.families = JSON.parse(localStorage.getItem('x'));
+    this.fetchElements();
     this.fetchForNotes();
   }
 
@@ -94,12 +102,14 @@ export class CalendarviewComponent implements OnInit {
     {
       this.hasAnyFamily = true;
       this.hasManyFamilies = false;
-      this.getNotesForThisMonth(this.calendarService.familyId);
-      this.getVisitsForThisMonth(this.calendarService.familyId);
+      this.getNotesForThisMonth(this.families[0].familyId);
+      this.getVisitsForThisMonth(this.families[0].familyId);
       this.refresh.next();
     }
     else if (this.families.length > 1)
     {
+      // this.getNotesForThisMonth(this.families[0].familyId);
+      // this.getVisitsForThisMonth(this.families[0].familyId);
       if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
       {
         this.fetchForSelectedNotes();
@@ -273,14 +283,22 @@ export class CalendarviewComponent implements OnInit {
           text: 'Pomyślnie utworzono notatkę'
         });
         this.noteText.value = '';
-        if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
+        if (this.isPSY)
         {
-          this.fetchForSelectedNotes();
+          if ( localStorage.getItem('selectedFamily') !== this.families[0].familyId )
+          {
+            this.fetchForSelectedNotes();
+          }
+          else
+          {
+            this.fetchForNotes();
+          }
         }
         else
         {
           this.fetchForNotes();
         }
+
       },
       error: err => {
         this.overlay = false;
