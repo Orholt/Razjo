@@ -28,6 +28,7 @@ export class FamilyComponent implements OnInit {
   familyId;
   $res: FamilyCreate;
   familises: FamilyCreate[];
+  safetyChecked = false;
 
   // tslint:disable-next-line: max-line-length
   constructor(private location: Location, private notesService: NotesService, private familyService: FamilyService, private loginService: LoginService) { }
@@ -44,6 +45,7 @@ export class FamilyComponent implements OnInit {
     {
       this.hasAnyFamilies = true;
     }
+    this.getFamilies();
   }
 
   refresh()
@@ -170,6 +172,7 @@ export class FamilyComponent implements OnInit {
   sendMailWithCodeFamily()
   {
     this.overlay = true;
+    this.getFamilies();
     this.getElements();
     let sel = document.getElementById('sel') as HTMLSelectElement;
     let x: IFamilySendMailWithCode = {
