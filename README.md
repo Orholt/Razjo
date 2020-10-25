@@ -26,19 +26,19 @@ W przypadku jednej i drugiej aplikacji, użytkownik identyfikowany jest za pomoc
 #### Frontend - Strona internetowa:
 Język : `TypeScript` oraz Framework `Angular CLI` w wersji **9.1.7**.
 **Wykorzystane moduły:**
-•	@angular-devkit/build-angular
-•	@angular/*
-•	@mattlewis92/dom-autoscroller
-•	@ng-bootstrap/ng-bootstrap
-•	@sweetalert2/ngx-sweetalert2
-•	angular-calendar
-•	angular-draggable-droppable
-•	angular-resizable-element
-•	animate.css
-•	calendar-utils
-•	core-js
-•	css-loader
-•	date-fns
+- 	@angular-devkit/build-angular
+- 	@angular/*
+- 	@mattlewis92/dom-autoscroller
+- 	@ng-bootstrap/ng-bootstrap
+- 	@sweetalert2/ngx-sweetalert2
+- 	angular-calendar
+- 	angular-draggable-droppable
+- 	angular-resizable-element
+- 	animate.css
+- 	calendar-utils
+- 	core-js
+- 	css-loader
+- 	date-fns
 
 ------------
 
