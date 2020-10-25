@@ -162,6 +162,7 @@ export class FamilyComponent implements OnInit {
       familyId: this.familises[sel.selectedIndex].familyId,
       email: this.emailToSend.value
     };
+    console.log(x);
     this.familyService.sendMailWithCodeFamily(x).subscribe({
       next: data => {
         this.overlay = false;

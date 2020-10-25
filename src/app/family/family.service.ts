@@ -34,7 +34,7 @@ export class FamilyService {
   sendMailWithCodeFamily(x: IFamilySendMailWithCode)
   {
     this.calendarService.headerToToken();
-    return this.http.post(this.apiUrl + '/Family/create', x, { headers: this.calendarService.reqHeader });
+    return this.http.post(this.apiUrl + '/Family/sendMailWithCode', x, { headers: this.calendarService.reqHeader });
   }
 
   removeFamily(x: string)
