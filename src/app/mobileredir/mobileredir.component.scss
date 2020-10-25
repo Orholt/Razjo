@@ -1,0 +1,55 @@
+.logo
+{
+    z-index: 999;
+    width: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+.pd
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 20%;
+    z-index: 1;
+    z-index: -10;
+}
+.ld
+{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 20vh;
+    z-index: -10;
+}
+.lg
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 20%;
+    z-index: -10;
+}
+.t1
+{
+  font-size: 5vw;
+}
+.cbtn
+{
+  background-color: #ce2a4b !important;
+  border-color: #ce2a4b;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  font-size: 3vw;
+}
+.cbtn:hover
+{
+  background-color: #ad243f !important;
+  border-color: #ad243f !important;
+}
+.center
+{
+    max-width: 50%;
+}

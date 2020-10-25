@@ -1,3 +1,4 @@
+import { MobileredirComponent } from './mobileredir/mobileredir.component';
 import { FamilyComponent } from './family/family.component';
 import { CalendarviewComponent } from './calendarview/calendarview.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'allNotes', component: AllnotesComponent},
   {path: 'calendar', component: CalendarviewComponent},
   {path: 'family', component: FamilyComponent},
+  {path: 'mobile', component: MobileredirComponent},
   {path: '**', pathMatch: 'full', component: AuthComponent }
 ];
 
