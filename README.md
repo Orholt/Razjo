@@ -1,27 +1,46 @@
-# Razjo
+# O Razjo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+##### Razjo, czyli aplikacja dostępna na urządzenia mobilne, oraz - póki co w formie aplikacji webowej - na komputery to usprawnienie pracy psychologa, jak i miejsce, w którym osoba korzystająca z niego pomocy znajdzie kilka przydatnych funkcjonalności dla siebie.
 
-## Development server
+####Razjo zakłada istnienie dwóch typów użytkowników:
+* **Psycholog** - może stworzyć „rodzinę” z pacjentem. Może mieć wiele „rodzin”.
+* **Zwykły użytkownik** - może dołączyć do „rodziny” psychologa za pomocą kodu zaproszeniowego. Może być tylko w jednej rodzinie.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Działanie strony internetowej:
+#####Po pomyślnej rejestracji użytkownika zostaje wysłany mail powitalny na jego skrzynkę pocztową. Po  zalogowaniu użytkownik ma wybór kilku opcji:
+- Tworzenie notatek - są to notatki należące tylko do użytkownika, który je tworzy, nikt inny nie ma do nich wglądu. Jest to idealne miejsce dla użytkownika na zapisywanie swoich przemyśleń lub dla psychologa na umieszczanie wpisów, które nie powinien widzieć pacjent.
+- Przeglądanie notatek – w tym miejscu użytkownik posiada możliwość podglądu i zarówno edycji swoich notatek. 
+- Kalendarz - rodzina posiada wspólny kalendarz, wyświetlają się w nim informacje o notatkach psychologa, jak i zwykłego użytkownika ale również informacje o zaplanowanych wizytach przez psychologa dla każdego typu użytkownika. Istnieją w aplikacji dwa typy notatek: te dodawane do kalendarza (wspólne dla psychologa i pacjenta) oraz prywatne (tylko widoczne dla użytkownika tworzącego).
+- Moja rodzina - dla zwykłego użytkownika znajduje się tam opcja dołączenia do „rodziny”, a po dołączeniu do niej, jest dostępne tam ID rodziny. Psycholog za to ma dostępnych więcej opcji. Może on utworzyć rodzinę, wysłać kod zaproszeniowy do rodziny przez maila lub usunąć rodzinę.
 
-## Code scaffolding
+###Działanie aplikacji mobilnej:
+Bardzo zbliżone do strony internetowej. 
+Po zalogowaniu zwykły użytkownik ma przed sobą kalendarz i zakładkę z prywatnymi notatkami. Kliknięcie na dany dzień wyświetli informacje o notatkach z możliwością dodania, na obecny dzień, oraz o wizytach.
+Po zalogowaniu na konto psychologa wyświetlają się pacjenci, a po kliknięciu na któregoś z nich wyświetla się kalendarz i wszystkie inne informacje.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+W przypadku jednej i drugiej aplikacji, użytkownik identyfikowany jest za pomocą tokena przesyłanego w request'cie do API.
 
-## Build
+------------
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+###Technikalia:
+####Frontend - Strona internetowa:
+Język : `TypeScript` oraz Framework `Angular CLI` w wersji **9.1.7**.
+**Wykorzystane moduły:**
+•	@angular-devkit/build-angular
+•	@angular/*
+•	@mattlewis92/dom-autoscroller
+•	@ng-bootstrap/ng-bootstrap
+•	@sweetalert2/ngx-sweetalert2
+•	angular-calendar
+•	angular-draggable-droppable
+•	angular-resizable-element
+•	animate.css
+•	calendar-utils
+•	core-js
+•	css-loader
+•	date-fns
 
-## Running unit tests
+[========]
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+###Aplikacja mobilna :tw-1f4f2:
+###**[<< POBIERZ APLIKACJĘ >>](https://www.dropbox.com/s/23rw85sp8ryv8il/Razjo.apk?dl=1 "<< POBIERZ APLIKACJĘ >>")**
