@@ -2,12 +2,12 @@
 
 ##### Razjo, czyli aplikacja dostępna na urządzenia mobilne, oraz - póki co w formie aplikacji webowej - na komputery to usprawnienie pracy psychologa, jak i miejsce, w którym osoba korzystająca z niego pomocy znajdzie kilka przydatnych funkcjonalności dla siebie.
 
-####Razjo zakłada istnienie dwóch typów użytkowników:
+#### Razjo zakłada istnienie dwóch typów użytkowników:
 * **Psycholog** - może stworzyć „rodzinę” z pacjentem. Może mieć wiele „rodzin”.
 * **Zwykły użytkownik** - może dołączyć do „rodziny” psychologa za pomocą kodu zaproszeniowego. Może być tylko w jednej rodzinie.
 
 ### Działanie strony internetowej:
-#####Po pomyślnej rejestracji użytkownika zostaje wysłany mail powitalny na jego skrzynkę pocztową. Po  zalogowaniu użytkownik ma wybór kilku opcji:
+##### Po pomyślnej rejestracji użytkownika zostaje wysłany mail powitalny na jego skrzynkę pocztową. Po  zalogowaniu użytkownik ma wybór kilku opcji:
 - Tworzenie notatek - są to notatki należące tylko do użytkownika, który je tworzy, nikt inny nie ma do nich wglądu. Jest to idealne miejsce dla użytkownika na zapisywanie swoich przemyśleń lub dla psychologa na umieszczanie wpisów, które nie powinien widzieć pacjent.
 - Przeglądanie notatek – w tym miejscu użytkownik posiada możliwość podglądu i zarówno edycji swoich notatek. 
 - Kalendarz - rodzina posiada wspólny kalendarz, wyświetlają się w nim informacje o notatkach psychologa, jak i zwykłego użytkownika ale również informacje o zaplanowanych wizytach przez psychologa dla każdego typu użytkownika. Istnieją w aplikacji dwa typy notatek: te dodawane do kalendarza (wspólne dla psychologa i pacjenta) oraz prywatne (tylko widoczne dla użytkownika tworzącego).
@@ -22,8 +22,8 @@ W przypadku jednej i drugiej aplikacji, użytkownik identyfikowany jest za pomoc
 
 ------------
 
-###Technikalia:
-####Frontend - Strona internetowa:
+### Technikalia:
+#### Frontend - Strona internetowa:
 Język : `TypeScript` oraz Framework `Angular CLI` w wersji **9.1.7**.
 **Wykorzystane moduły:**
 •	@angular-devkit/build-angular
@@ -42,5 +42,5 @@ Język : `TypeScript` oraz Framework `Angular CLI` w wersji **9.1.7**.
 
 [========]
 
-###Aplikacja mobilna :tw-1f4f2:
-###**[<< POBIERZ APLIKACJĘ >>](https://www.dropbox.com/s/23rw85sp8ryv8il/Razjo.apk?dl=1 "<< POBIERZ APLIKACJĘ >>")**
+### Aplikacja mobilna :tw-1f4f2:
+### **[<< POBIERZ APLIKACJĘ >>](https://www.dropbox.com/s/23rw85sp8ryv8il/Razjo.apk?dl=1 "<< POBIERZ APLIKACJĘ >>")**
